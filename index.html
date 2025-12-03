@@ -339,9 +339,10 @@
     <!-- SCRIPT -->
     <script>
         // ******************************************************
-        // ⚠️ สำคัญมาก: เปลี่ยน URL ตรงนี้เป็น Web App URL ของคุณ
+        // ⚠️ สำคัญมาก: เปลี่ยน URL ตรงนี้เป็น Web App URL ของคุณ (ที่ลงท้ายด้วย /exec)
+        // ❌ อย่าใช้ลิงก์ Vercel ตรงนี้เด็ดขาด
         // ******************************************************
-        const API_URL = 'https://palliative-npr1.vercel.app/'; 
+        const API_URL = 'https://script.google.com/macros/s/AKfycbypIyoEJj9PF8WLYlF6wDFX8S2qQTAN5y0yxvUhsiJYgSIQmM4on1BeQghoirEpVuR9/exec'; 
 
         let currentUser = null;
         let currentPatient = null;
@@ -356,8 +357,9 @@
             const u = document.getElementById('username').value;
             const p = document.getElementById('password').value;
 
-            if (API_URL === 'https://script.google.com/macros/s/AKfycbzfYWL1VGIh3WyouzVZ5XY7V8VhiBnq81KXbWX2CfwFElQ-Ocga7jY8U4Q_uhiJJibG/exec') {
-                Swal.fire('Configuration Error', 'กรุณาใส่ Web App URL ใน Code HTML บรรทัดที่ 262 ก่อนครับ', 'warning');
+            // แก้ไข Logic การตรวจสอบให้ถูกต้อง (เช็คว่าลืมเปลี่ยน Placeholder หรือไม่)
+            if (API_URL === 'INSERT_YOUR_APPS_SCRIPT_URL_HERE' || API_URL.includes('vercel.app')) {
+                Swal.fire('Configuration Error', 'กรุณาใส่ Google Apps Script Web App URL (ที่ลงท้ายด้วย /exec) ในบรรทัดที่ 262 ก่อนครับ', 'warning');
                 return;
             }
 
@@ -376,7 +378,7 @@
                 }
             } catch (err) {
                 console.error(err);
-                Swal.fire('Connection Error', 'ไม่สามารถเชื่อมต่อ Server ได้\n1. ตรวจสอบ URL\n2. ตรวจสอบ Deploy Settings (Anyone)', 'error');
+                Swal.fire('Connection Error', 'ไม่สามารถเชื่อมต่อ Server ได้\n1. ตรวจสอบว่า API_URL ถูกต้องหรือไม่\n2. ตรวจสอบว่า Deploy เป็น Anyone หรือยัง', 'error');
             } finally {
                 setLoading(false);
             }
@@ -672,6 +674,4 @@
         }
     </script>
 </body>
-
 </html>
-
