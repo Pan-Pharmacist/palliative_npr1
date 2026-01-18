@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Palliative Care Smart System (Masterpiece)</title>
+    <title>Palliative Care Smart System (Masterpiece V2.5)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -19,8 +19,12 @@
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
         .tab-btn.active { border-bottom: 2px solid #2563eb; color: #1d4ed8; background-color: #eff6ff; }
-        /* Table Sticky Header */
         .sticky-th { position: sticky; top: 0; z-index: 10; background-color: #f8fafc; }
+        
+        /* Custom Range Slider */
+        input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 18px; width: 18px; border-radius: 50%; background: #2563eb; cursor: pointer; margin-top: -6px; box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 6px; cursor: pointer; background: #cbd5e1; border-radius: 3px; }
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen text-slate-800">
@@ -31,22 +35,13 @@
                 <div class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-inner">
                     <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                 </div>
-                <h1 class="text-2xl font-bold text-slate-800">โปรแกรมดูแลผู้ป่วยประคับประคอง</h1>
-                <p class="text-slate-500 text-sm mt-1">กลุ่มงานเภสัชกรรม โรงพยาบาลนพรัตนราชธานี</p>
+                <h1 class="text-2xl font-bold text-slate-800">Palliative Care</h1>
+                <p class="text-slate-500 text-sm mt-1">Pharmacy System V2.5</p>
             </div>
             <form id="loginForm" class="space-y-5">
-                <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">ผู้ใช้งาน</label>
-                    <input type="text" id="username" class="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" required>
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">รหัสผ่าน</label>
-                    <input type="password" id="password" class="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" required>
-                </div>
-                <button type="submit" id="loginBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-all shadow-lg flex justify-center items-center gap-2">
-                    <span>เข้าสู่ระบบ</span>
-                    <div id="loginLoader" class="hidden animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                </button>
+                <div><label class="block text-sm font-medium text-slate-700 mb-1">ผู้ใช้งาน</label><input type="text" id="username" class="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" required></div>
+                <div><label class="block text-sm font-medium text-slate-700 mb-1">รหัสผ่าน</label><input type="password" id="password" class="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" required></div>
+                <button type="submit" id="loginBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-all shadow-lg flex justify-center items-center gap-2"><span>เข้าสู่ระบบ</span><div id="loginLoader" class="hidden animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div></button>
             </form>
         </div>
     </div>
@@ -59,23 +54,17 @@
                         <div class="bg-blue-50 p-2 rounded-lg">
                             <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
                         </div>
-                        <div>
-                            <h1 class="text-lg font-bold text-slate-800 leading-tight">Palliative Care</h1>
-                            <p class="text-xs text-slate-500">กลุ่มงานเภสัชกรรม โรงพยาบาลนพรัตนราชธานี</p>
-                        </div>
+                        <div><h1 class="text-lg font-bold text-slate-800 leading-tight">Palliative Care</h1><p class="text-xs text-slate-500">Nopparat Hospital</p></div>
                     </div>
                     <div class="flex-1 max-w-xl w-full relative">
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-3"><svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span>
-                            <input type="text" id="smartSearch" placeholder="🔍 ค้นหา HN หรือ ชื่อ..." class="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-full bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm">
-                        </div>
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3"><svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></span>
+                        <input type="text" id="smartSearch" placeholder="🔍 ค้นหา HN หรือ ชื่อ..." class="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-full bg-slate-50 focus:bg-white focus:ring-2 focus:ring-blue-500 outline-none transition-all shadow-sm">
                     </div>
                     <div class="flex items-center gap-3 w-full md:w-auto justify-end">
                         <span id="userDisplay" class="text-sm font-medium text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200"></span>
                         <button onclick="logout()" class="text-red-500 hover:text-red-700 text-sm font-semibold">ออก</button>
                     </div>
                 </div>
-                
                 <nav class="flex space-x-1 overflow-x-auto pt-2 pb-1 no-scrollbar">
                     <button onclick="switchTab('addPatient')" class="tab-btn active px-4 py-2 text-sm font-medium text-slate-500 hover:bg-slate-50 rounded-t-lg whitespace-nowrap">1. เพิ่มผู้ป่วย</button>
                     <button onclick="switchTab('individual')" class="tab-btn px-4 py-2 text-sm font-medium text-slate-500 hover:bg-slate-50 rounded-t-lg whitespace-nowrap">2. ข้อมูลรายบุคคล</button>
@@ -109,7 +98,11 @@
                                 </select>
                             </div>
                             <div><label class="label-text">โรคหลัก (Diagnosis)</label><input type="text" name="diagnosis" class="input-box" required></div>
-                            <div class="md:col-span-2"><label class="label-text">โรคร่วม</label><textarea name="comorbidities" rows="2" class="input-box"></textarea></div>
+                            <div class="md:col-span-2"><label class="label-text">โรคร่วม (Comorbidities)</label><textarea name="comorbidities" rows="2" class="input-box"></textarea></div>
+                            <div class="md:col-span-2">
+                                <label class="label-text text-indigo-700">ประวัติโดยย่อเกี่ยวกับโรคและการรักษา</label>
+                                <textarea name="historySummary" rows="3" class="input-box border-indigo-200 bg-indigo-50" placeholder="ระบุประวัติโดยย่อ..."></textarea>
+                            </div>
                         </div>
                         <div class="flex justify-end gap-3"><button type="reset" class="btn-secondary">ล้างค่า</button><button type="submit" class="btn-primary">💾 บันทึกข้อมูล</button></div>
                     </form>
@@ -136,6 +129,10 @@
                                 <p><span class="font-bold">Status:</span> <span id="detailStatus"></span></p>
                                 <p><span class="font-bold">Dx:</span> <span id="detailDx"></span></p>
                             </div>
+                            <div class="mt-4 pt-4 border-t text-sm z-10 relative">
+                                <p class="font-bold text-slate-700">ประวัติโดยย่อ:</p>
+                                <p id="detailHistorySummary" class="text-slate-600 italic">-</p>
+                            </div>
                             <button onclick="openVisitModal()" class="mt-6 w-full btn-primary">+ เพิ่ม Visit ใหม่</button>
                         </div>
                         <div class="lg:col-span-2 bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col">
@@ -143,12 +140,11 @@
                             <div class="flex-1 relative w-full h-48"><canvas id="painChart"></canvas></div>
                         </div>
                     </div>
-
                     <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
                         <h4 class="text-lg font-bold text-slate-800 mb-4 pb-2 border-b">ประวัติการรักษา</h4>
                         <div class="overflow-x-auto">
                             <table class="w-full text-sm divide-y divide-slate-100">
-                                <thead class="bg-slate-50"><tr><th class="p-3 text-left">วันที่</th><th class="p-3 text-left">อาการ/DRPs</th><th class="p-3 text-left">การรักษา</th><th class="p-3 text-center">Pain</th><th class="p-3 text-left">ไฟล์แนบ</th><th class="p-3 text-left">ผู้บันทึก</th></tr></thead>
+                                <thead class="bg-slate-50"><tr><th class="p-3 text-left">วันที่</th><th class="p-3 text-left">อาการ/DRPs</th><th class="p-3 text-left">การรักษา</th><th class="p-3 text-center">Pain</th><th class="p-3 text-center">PPS/ECOG</th><th class="p-3 text-left">Attach</th><th class="p-3 text-left">ผู้บันทึก</th></tr></thead>
                                 <tbody id="visitHistoryBody"></tbody>
                             </table>
                         </div>
@@ -197,6 +193,10 @@
                             </div>
                             <div><label class="label-text">Diagnosis</label><input type="text" name="diagnosis" id="edit_diagnosis" class="input-box" required></div>
                             <div class="md:col-span-2"><label class="label-text">โรคร่วม</label><textarea name="comorbidities" id="edit_comorbidities" rows="2" class="input-box"></textarea></div>
+                            <div class="md:col-span-2">
+                                <label class="label-text text-indigo-700">ประวัติโดยย่อเกี่ยวกับโรคและการรักษา</label>
+                                <textarea name="historySummary" id="edit_historySummary" rows="3" class="input-box border-indigo-200 bg-indigo-50"></textarea>
+                            </div>
                         </div>
                         <div class="flex justify-end gap-3"><button type="submit" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-6 rounded-lg shadow">บันทึกการแก้ไข</button></div>
                     </form>
@@ -205,20 +205,20 @@
 
             <div id="tab-report" class="tab-content hidden fade-in">
                 <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 max-w-4xl mx-auto">
-                    <h2 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2"><span class="bg-indigo-100 p-2 rounded-full">📄</span> ดึงรายงาน (Export)</h2>
+                    <h2 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2"><span class="bg-indigo-100 p-2 rounded-full">📄</span> ดึงรายงาน (Export Full Data)</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div><label class="label-text">ตั้งแต่วันที่</label><input type="date" id="rptStart" class="input-box"></div>
                         <div><label class="label-text">ถึงวันที่</label><input type="date" id="rptEnd" class="input-box"></div>
                     </div>
                     <div class="flex gap-3 justify-center">
                         <button onclick="exportReport('excel')" class="flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 shadow font-bold">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg> Download Excel
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg> Download Excel (All Columns)
                         </button>
                         <button onclick="exportReport('word')" class="flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 shadow font-bold">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg> Download Word
                         </button>
                     </div>
-                    <p class="text-center text-slate-400 text-sm mt-4">* ระบบจะดึงข้อมูล: HN, ชื่อ, ประวัติ, การรักษา, DRPs, การแก้ไข ตามช่วงเวลาที่เลือก</p>
+                    <p class="text-center text-slate-400 text-sm mt-4">* ข้อมูลทั้งหมดรวมถึง PPS, ECOG, DRPs และค่า Lab จะถูกดึงออกมาทั้งหมด</p>
                 </div>
             </div>
 
@@ -235,15 +235,37 @@
                 <form id="visitForm" class="space-y-6">
                     <input type="hidden" id="visitHnHidden">
                     
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 bg-slate-50 p-4 rounded-lg border">
-                        <div><label class="label-text">วันที่</label><input type="date" id="visitDate" class="input-box" required></div>
-                        <div><label class="label-text">เวลาบริบาล (นาที)</label><input type="number" id="visitDuration" class="input-box" placeholder="เช่น 30"></div>
-                        <div class="md:col-span-2">
-                            <label class="label-text text-red-600">Pain Score (0-10)</label>
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-4 bg-slate-50 p-4 rounded-lg border">
+                        <div class="md:col-span-3"><label class="label-text">วันที่</label><input type="date" id="visitDate" class="input-box" required></div>
+                        <div class="md:col-span-2"><label class="label-text">เวลา (นาที)</label><input type="number" id="visitDuration" class="input-box" placeholder="เช่น 30"></div>
+                        
+                        <div class="md:col-span-3">
+                            <label class="label-text text-red-600">Pain (0-10)</label>
                             <div class="flex items-center gap-2">
-                                <input type="range" id="visitPainScore" min="0" max="10" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer" oninput="document.getElementById('painVal').innerText=this.value">
-                                <span id="painVal" class="text-xl font-bold text-red-600 w-8">0</span>
+                                <input type="range" id="visitPainScore" min="0" max="10" step="1" class="w-full accent-red-500" oninput="document.getElementById('painVal').innerText=this.value">
+                                <span id="painVal" class="text-xl font-bold text-red-600 w-6">0</span>
                             </div>
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <label class="label-text text-blue-600">PPS (%)</label>
+                            <select id="visitPPS" class="input-box bg-blue-50">
+                                <option value="100">100%</option><option value="90">90%</option><option value="80">80%</option>
+                                <option value="70">70%</option><option value="60">60%</option><option value="50">50%</option>
+                                <option value="40">40%</option><option value="30">30%</option><option value="20">20%</option>
+                                <option value="10">10%</option><option value="0">0%</option>
+                            </select>
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <label class="label-text text-purple-600">ECOG</label>
+                            <select id="visitECOG" class="input-box bg-purple-50">
+                                <option value="0">0 (Active)</option>
+                                <option value="1">1 (Restricted)</option>
+                                <option value="2">2 (Self-care)</option>
+                                <option value="3">3 (Limited)</option>
+                                <option value="4">4 (Disabled)</option>
+                            </select>
                         </div>
                     </div>
 
@@ -251,11 +273,28 @@
                         <div><label class="label-text">1. อาการสำคัญ / ประวัติ</label><textarea id="visitHistory" rows="3" class="input-box"></textarea></div>
                         <div><label class="label-text">2. การรักษา / ยาที่ปรับ</label><textarea id="visitRegimen" rows="3" class="input-box"></textarea></div>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                         <div><label class="label-text">3. ปัญหาจากการใช้ยา (DRPs) / อื่นๆ</label><textarea id="visitDrp" rows="3" class="input-box bg-orange-50 border-orange-200"></textarea></div>
-                         <div><label class="label-text">4. การแก้ไข / ป้องกัน / คำแนะนำ</label><textarea id="visitIntervention" rows="3" class="input-box bg-green-50 border-green-200"></textarea></div>
+
+                    <div class="bg-orange-50 p-4 rounded-lg border border-orange-200">
+                        <label class="label-text text-orange-800 mb-2">3. ปัญหาจากการใช้ยา (DRPs) - เลือกได้มากกว่า 1 ข้อ</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3 text-sm text-slate-700">
+                            <label class="flex items-center gap-2"><input type="checkbox" name="drpCheck" value="1. ไม่ได้รับยาที่สมควรได้รับ"> 1. ไม่ได้รับยาที่สมควรได้รับ</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" name="drpCheck" value="2. ได้รับยาที่ไม่เหมาะสม"> 2. ได้รับยาที่ไม่เหมาะสม</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" name="drpCheck" value="3. ได้รับขนาดยาน้อยเกินไป"> 3. ได้รับขนาดยาน้อยเกินไป</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" name="drpCheck" value="4. เกิดอาการไม่พึงประสงค์จากการใช้ยา"> 4. เกิดอาการไม่พึงประสงค์จากการใช้ยา</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" name="drpCheck" value="5. เกิดอันตรกิริยาระหว่างยา"> 5. เกิดอันตรกิริยาระหว่างยา</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" name="drpCheck" value="6. ไม่ได้รับยาตามแพทย์สั่ง"> 6. ไม่ได้รับยาตามแพทย์สั่ง</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" name="drpCheck" value="7. ได้รับยาที่ไม่มีข้อบ่งชี้ทางการแพทย์"> 7. ได้รับยาที่ไม่มีข้อบ่งชี้ทางการแพทย์</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" name="drpCheck" value="8. ผู้ป่วยขาดความร่วมมือการใช้ยา"> 8. ผู้ป่วยขาดความร่วมมือการใช้ยา</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" name="drpCheck" value="9. ผู้ป่วยไม่ได้ใช้ยาตามแพทย์สั่ง"> 9. ผู้ป่วยไม่ได้ใช้ยาตามแพทย์สั่ง</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" name="drpCheck" value="10. ปัญหาอื่นๆ"> 10. ปัญหาอื่นๆ</label>
+                        </div>
+                        <input type="text" id="visitDrpNote" class="input-box bg-white" placeholder="ระบุรายละเอียดเพิ่มเติม / หมายเหตุ DRPs...">
                     </div>
-                    <div><label class="label-text">5. ผลลัพธ์ (Outcome)</label><input type="text" id="visitOutcome" class="input-box"></div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                         <div><label class="label-text">4. การแก้ไข / ป้องกัน / คำแนะนำ</label><textarea id="visitIntervention" rows="3" class="input-box bg-green-50 border-green-200"></textarea></div>
+                         <div><label class="label-text">5. ผลลัพธ์ (Outcome)</label><textarea id="visitOutcome" rows="3" class="input-box"></textarea></div>
+                    </div>
 
                     <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
                         <h4 class="font-bold text-blue-800 mb-3">🌡️ สัญญาณชีพและผลแลป (Vital Signs & Labs)</h4>
@@ -293,8 +332,7 @@
     </div>
 
     <script>
-        // *** CONFIGURATION ***
-        const API_URL = 'https://script.google.com/macros/s/AKfycbzTTmE1nSV_G1y3baMMQAwAt038Aw25gIBoqBaxWkhmfTpd7ylV6FAPYLZTTTcX_isl/exec'; // <--- เปลี่ยน URL ของคุณที่นี่
+        const API_URL = 'https://script.google.com/macros/s/AKfycbz3cVwcbtf8YNuRWbfcEAErqCaC7HTbde-3O4dZ_jvkhDavdziMquG-0kuS8g8O8r9Y/exec'; // <--- เปลี่ยน URL ของคุณ
 
         // Global Styles
         const style = document.createElement('style');
@@ -315,13 +353,11 @@
         let painChartInstance = null;
         let dashChartInstance = null;
 
-        // --- AUTH ---
         document.getElementById('loginForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('loginBtn');
             const loader = document.getElementById('loginLoader');
             btn.disabled = true; loader.classList.remove('hidden');
-
             try {
                 const res = await fetchAPI('login', { username: document.getElementById('username').value, password: document.getElementById('password').value });
                 if (res.success) {
@@ -330,16 +366,13 @@
                     document.getElementById('loginPage').classList.add('hidden');
                     document.getElementById('mainApp').classList.remove('hidden');
                     loadAllPatients();
-                    switchTab('dashboard'); // Default to Dashboard for Overview
-                } else {
-                    Swal.fire('Login Failed', res.message, 'error');
-                }
+                    switchTab('dashboard');
+                } else { Swal.fire('Login Failed', res.message, 'error'); }
             } catch (err) { Swal.fire('Error', 'Connection Error', 'error'); } 
             finally { btn.disabled = false; loader.classList.add('hidden'); }
         });
 
         function logout() { location.reload(); }
-
         async function fetchAPI(action, data = {}) {
             const response = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action, ...data }) });
             return await response.json();
@@ -353,12 +386,11 @@
             const btns = document.querySelectorAll('.tab-btn');
             const mapping = { 'addPatient':0, 'individual':1, 'overall':2, 'dashboard':3, 'editPatient':4, 'report':5 };
             if(mapping[tabId] !== undefined) btns[mapping[tabId]].classList.add('active');
-
             if(tabId === 'overall') loadOverallData();
             if(tabId === 'dashboard') loadDashboard();
         }
 
-        // --- PATIENT MANAGEMENT ---
+        // --- PATIENT ---
         document.getElementById('addPatientForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             Swal.showLoading();
@@ -384,19 +416,10 @@
                 tbody.appendChild(tr);
             });
         }
-
         function searchPatient() {
             const q = document.getElementById('searchHNInput').value.toLowerCase();
             renderPatientList(allPatients.filter(p => p.hn.includes(q) || p.fname.toLowerCase().includes(q) || (p.fname+' '+p.lname).toLowerCase().includes(q)));
         }
-
-        document.getElementById('smartSearch').addEventListener('keyup', (e) => {
-            if(e.key === 'Enter') {
-                const found = allPatients.find(p => p.hn === e.target.value || p.fname.includes(e.target.value));
-                if(found) { switchTab('individual'); selectPatient(found); e.target.value=''; }
-                else Swal.fire({toast:true, title:'ไม่พบผู้ป่วย', icon:'warning'});
-            }
-        });
 
         async function selectPatient(p) {
             currentPatient = p;
@@ -406,6 +429,7 @@
             document.getElementById('detailHN').innerText = p.hn;
             document.getElementById('detailStatus').innerText = p.status;
             document.getElementById('detailDx').innerText = p.diagnosis;
+            document.getElementById('detailHistorySummary').innerText = p.historySummary || '-';
 
             const res = await fetchAPI('getVisits', { hn: p.hn });
             const tbody = document.getElementById('visitHistoryBody');
@@ -415,21 +439,18 @@
                     tbody.innerHTML += `
                         <tr class="hover:bg-slate-50 border-b">
                             <td class="p-3 whitespace-nowrap">${v.date}</td>
-                            <td class="p-3 max-w-xs truncate" title="${v.history}\nDRP: ${v.drp}">${v.history}</td>
+                            <td class="p-3 max-w-xs truncate" title="${v.history}">${v.history}</td>
                             <td class="p-3 max-w-xs truncate" title="${v.regimen}">${v.regimen}</td>
                             <td class="p-3 text-center font-bold ${v.painScore>=7?'text-red-600':'text-slate-600'}">${v.painScore}</td>
+                            <td class="p-3 text-center text-xs text-slate-500">PPS:${v.pps}% / ECOG:${v.ecog}</td>
                             <td class="p-3 text-center">${v.fileUrl ? `<a href="${v.fileUrl}" target="_blank" class="text-blue-500">📎</a>` : '-'}</td>
                             <td class="p-3 text-xs text-slate-500">${v.recorder}</td>
                         </tr>`;
                 });
                 renderChart(res.data);
-            } else { tbody.innerHTML = '<tr><td colspan="6" class="p-4 text-center">ไม่มีประวัติ</td></tr>'; renderChart([]); }
+            } else { tbody.innerHTML = '<tr><td colspan="7" class="p-4 text-center">ไม่มีประวัติ</td></tr>'; renderChart([]); }
         }
-
-        function backToSearch() {
-            document.getElementById('patientDetailSection').classList.add('hidden');
-            document.getElementById('manualSearchSection').classList.remove('hidden');
-        }
+        function backToSearch() { document.getElementById('patientDetailSection').classList.add('hidden'); document.getElementById('manualSearchSection').classList.remove('hidden'); }
 
         function renderChart(visits) {
             const ctx = document.getElementById('painChart').getContext('2d');
@@ -445,9 +466,12 @@
             });
         }
 
-        // --- VISIT LOGIC ---
+        // --- VISIT MODAL ---
         function openVisitModal() {
             document.getElementById('visitForm').reset();
+            // Clear DRP Checks
+            document.querySelectorAll('input[name="drpCheck"]').forEach(c => c.checked = false);
+            
             document.getElementById('visitHnHidden').value = currentPatient.hn;
             document.getElementById('visitDate').value = new Date().toISOString().split('T')[0];
             document.getElementById('visitPainScore').value = 0; document.getElementById('painVal').innerText = '0';
@@ -468,12 +492,16 @@
         async function saveVisit() {
             Swal.fire({ title: 'กำลังบันทึก...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
             
-            // File Handling
+            // Gather DRP Checkboxes
+            const drpChecked = Array.from(document.querySelectorAll('input[name="drpCheck"]:checked')).map(c => c.value);
+            const drpListString = drpChecked.join(', ');
+
+            // File
             const fileInput = document.getElementById('visitFile');
             let fileData = null, fileName = null;
             if (fileInput.files.length > 0) {
                 const file = fileInput.files[0];
-                if(file.size > 4000000) { Swal.fire('Error', 'ไฟล์ใหญ่เกิน 4MB', 'error'); return; } // Limit for stability
+                if(file.size > 4000000) { Swal.fire('Error', 'ไฟล์ใหญ่เกิน 4MB', 'error'); return; }
                 fileName = file.name;
                 fileData = await new Promise(resolve => {
                     const reader = new FileReader();
@@ -486,9 +514,12 @@
                 hn: document.getElementById('visitHnHidden').value,
                 date: document.getElementById('visitDate').value,
                 painScore: document.getElementById('visitPainScore').value,
+                pps: document.getElementById('visitPPS').value,
+                ecog: document.getElementById('visitECOG').value,
                 history: document.getElementById('visitHistory').value,
                 regimen: document.getElementById('visitRegimen').value,
-                drp: document.getElementById('visitDrp').value,
+                drpList: drpListString,
+                drpNote: document.getElementById('visitDrpNote').value,
                 intervention: document.getElementById('visitIntervention').value,
                 outcome: document.getElementById('visitOutcome').value,
                 duration: document.getElementById('visitDuration').value,
@@ -498,11 +529,9 @@
                 // Labs
                 egfr: document.getElementById('l_egfr').value, creatinine: document.getElementById('l_cr').value, protein: document.getElementById('l_prot').value,
                 albumin: document.getElementById('l_alb').value, ast: document.getElementById('l_ast').value, alt: document.getElementById('l_alt').value, otherLabs: document.getElementById('l_other').value,
-                // Misc
                 notes: document.getElementById('visitNotes').value,
                 recorder: currentUser.name,
-                fileData: fileData,
-                fileName: fileName
+                fileData: fileData, fileName: fileName
             };
 
             const res = await fetchAPI('addVisit', payload);
@@ -530,26 +559,26 @@
                         <td class="p-3 text-slate-400 text-xs">${v.recorder}</td>
                     </tr>`;
             });
-            window.allVisitsData = res.data; // Cache for dashboard
+            window.allVisitsData = res.data;
         }
         function jumpToPatient(hn) { const p = allPatients.find(x => x.hn===hn); if(p) { switchTab('individual'); selectPatient(p); } }
 
-        // --- EDIT PATIENT ---
+        // --- EDIT ---
         function loadPatientForEdit() {
             const hn = document.getElementById('editSearchHN').value.trim();
             const p = allPatients.find(x => x.hn === hn);
             if(p) {
                 document.getElementById('editPatientForm').classList.remove('hidden');
                 document.getElementById('edit_hn').value = p.hn;
-                document.getElementById('edit_regDate').value = p.regDate; // Check format YYYY-MM-DD
+                document.getElementById('edit_regDate').value = p.regDate;
                 document.getElementById('edit_fname').value = p.fname;
                 document.getElementById('edit_lname').value = p.lname;
                 document.getElementById('edit_status').value = p.status;
                 document.getElementById('edit_diagnosis').value = p.diagnosis;
                 document.getElementById('edit_comorbidities').value = p.comorbidities;
+                document.getElementById('edit_historySummary').value = p.historySummary || '';
             } else { Swal.fire('ไม่พบ HN', 'กรุณาตรวจสอบเลข HN', 'error'); }
         }
-
         document.getElementById('editPatientForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             Swal.showLoading();
@@ -565,54 +594,49 @@
             const resData = window.allVisitsData || [];
             document.getElementById('statTotalVisits').innerText = resData.filter(v => new Date(v.date).getMonth() === new Date().getMonth()).length;
             document.getElementById('statHighPain').innerText = resData.filter(v => v.painScore >= 7).length;
-
             const ctx = document.getElementById('dashboardChart').getContext('2d');
             if(dashChartInstance) dashChartInstance.destroy();
             dashChartInstance = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.'], // Demo labels
+                    labels: ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.'],
                     datasets: [{ label: 'จำนวนการบริบาล', data: [12, 19, 3, 5, 2, 3], backgroundColor: '#3b82f6' }]
                 },
                 options: { responsive: true, maintainAspectRatio: false }
             });
         }
 
-        // --- REPORTS (Export) ---
+        // --- REPORTS ---
         async function exportReport(type) {
             const start = document.getElementById('rptStart').value;
             const end = document.getElementById('rptEnd').value;
             if(!start || !end) return Swal.fire('Warning', 'กรุณาระบุช่วงเวลา', 'warning');
-
             Swal.showLoading();
             const res = await fetchAPI('getReportData', { startDate: start, endDate: end });
-            
-            if(!res.success || res.data.length === 0) return Swal.fire('Info', 'ไม่พบข้อมูลในช่วงเวลานี้', 'info');
+            if(!res.success || res.data.length === 0) return Swal.fire('Info', 'ไม่พบข้อมูล', 'info');
 
             if(type === 'excel') {
                 const ws = XLSX.utils.json_to_sheet(res.data);
                 const wb = XLSX.utils.book_new();
-                XLSX.utils.book_append_sheet(wb, ws, "Report");
-                XLSX.writeFile(wb, `Report_${start}_to_${end}.xlsx`);
+                XLSX.utils.book_append_sheet(wb, ws, "FullReport");
+                XLSX.writeFile(wb, `Palliative_Full_Report_${start}_to_${end}.xlsx`);
             } else if(type === 'word') {
                 let html = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'><head><meta charset='utf-8'><title>Report</title></head><body>`;
-                html += `<h1 style="text-align:center">รายงานการบริบาลเภสัชกรรม (Palliative Care)</h1>`;
-                html += `<p>ข้อมูลระหว่างวันที่: ${start} ถึง ${end}</p>`;
-                html += `<table border="1" style="border-collapse:collapse; width:100%"><thead><tr style="background:#ddd"><th>วันที่</th><th>HN</th><th>ชื่อและนามสกุล</th><th>อาการสำคัญ/ประวัติ</th><th>การรักษา/ยาที่ปรับ</th><th>ปัญหาจากการใช้ยา (DRPs)/อื่นๆ</th><th>ผลลัพธ์</th></tr></thead><tbody>`;
-                
+                html += `<h1 style="text-align:center">Palliative Care Report (Full)</h1>`;
+                html += `<p>Date: ${start} - ${end}</p>`;
+                html += `<table border="1" style="border-collapse:collapse; width:100%"><thead><tr style="background:#ddd"><th>Date</th><th>HN</th><th>Name</th><th>Hx</th><th>Rx</th><th>DRP</th><th>Outcome</th><th>Score</th></tr></thead><tbody>`;
                 res.data.forEach(d => {
                     html += `<tr>
-                        <td>${d.date}</td><td>${d.hn}</td><td>${d.name}</td>
-                        <td>${d.history}</td><td>${d.regimen}</td><td>${d.drp}<br/>Advice: ${d.intervention}</td><td>${d.outcome}</td>
+                        <td>${d.VisitDate}</td><td>${d.HN}</td><td>${d.PatientName}</td>
+                        <td>${d.History}</td><td>${d.Regimen}</td><td>${d.DRP_List}<br/>${d.DRP_Note}</td><td>${d.Outcome}</td>
+                        <td>Pain:${d.Pain_Score}, PPS:${d.PPS_Score}, ECOG:${d.ECOG}</td>
                     </tr>`;
                 });
                 html += `</tbody></table></body></html>`;
-                
                 const blob = new Blob(['\ufeff', html], { type: 'application/msword' });
-                const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
-                a.href = url;
-                a.download = `Report_${start}_to_${end}.doc`;
+                a.href = URL.createObjectURL(blob);
+                a.download = `Palliative_Report_${start}_to_${end}.doc`;
                 a.click();
             }
             Swal.close();
