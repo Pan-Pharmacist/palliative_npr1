@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Palliative Care Smart System (Masterpiece Design)</title>
+    <title>Palliative Care Smart System (Final Masterpiece)</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
                 extend: {
                     fontFamily: { sans: ['Sarabun', 'sans-serif'] },
                     colors: {
-                        brand: { 50: '#eff6ff', 100: '#dbeafe', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a' }
+                        emerald: { 50: '#ecfdf5', 100: '#d1fae5', 500: '#10b981', 600: '#059669', 700: '#047857', 800: '#065f46', 900: '#064e3b' }
                     }
                 }
             }
@@ -25,11 +25,10 @@
     </script>
 
     <style>
-        body { background-color: #f1f5f9; } /* สีพื้นหลังนุ่มขึ้น */
-        .fade-in { animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        body { background-color: #f8fafc; }
+        .fade-in { animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
-        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
@@ -38,63 +37,58 @@
         /* Modern Tabs */
         .nav-link {
             position: relative;
-            color: rgba(255,255,255,0.7);
-            transition: all 0.3s ease;
+            color: rgba(255,255,255,0.8);
+            transition: all 0.2s ease;
         }
-        .nav-link:hover { color: white; background: rgba(255,255,255,0.1); }
+        .nav-link:hover { color: white; background: rgba(255,255,255,0.15); }
         .nav-link.active {
             color: white;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.25);
             font-weight: 600;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: inset 0 -2px 0 0 rgba(255,255,255,0.5);
         }
 
-        /* Input Styling */
+        /* Clean Input Styling */
         .form-input {
             width: 100%;
-            padding: 0.625rem 1rem;
-            background-color: #f8fafc;
+            padding: 0.6rem 1rem;
+            background-color: #ffffff; /* Unified White Background */
             border: 1px solid #e2e8f0;
-            border-radius: 0.75rem;
+            border-radius: 0.5rem;
             transition: all 0.2s;
             outline: none;
+            color: #334155;
         }
         .form-input:focus {
-            background-color: white;
-            border-color: #6366f1;
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+            border-color: #10b981; /* Emerald Focus */
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
         }
+        .form-input[readonly] { background-color: #f1f5f9; color: #64748b; }
+
         .section-card {
             background: white;
-            border-radius: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             border: 1px solid #f1f5f9;
         }
     </style>
 </head>
 <body class="text-slate-700 antialiased min-h-screen flex flex-col">
 
-    <div id="loginPage" class="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-indigo-100 via-blue-50 to-white">
-        <div class="bg-white/80 backdrop-blur-xl p-10 rounded-3xl shadow-2xl w-full max-w-md border border-white/50 fade-in">
+    <div id="loginPage" class="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-emerald-50 to-teal-100">
+        <div class="bg-white/90 backdrop-blur-xl p-10 rounded-2xl shadow-xl w-full max-w-md border border-white/50 fade-in">
             <div class="text-center mb-8">
-                <div class="w-20 h-20 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/30 text-white">
-                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                <div class="w-16 h-16 bg-gradient-to-tr from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg text-white">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
                 </div>
-                <h1 class="text-3xl font-bold text-slate-800 tracking-tight">Palliative Care</h1>
-                <p class="text-slate-500 mt-2">Nopparat Hospital System</p>
+                <h1 class="text-2xl font-bold text-slate-800">Palliative Care</h1>
+                <p class="text-slate-500">Pharmacy Data System</p>
             </div>
             <form id="loginForm" class="space-y-5">
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-1.5 ml-1">Username</label>
-                    <input type="text" id="username" class="form-input" placeholder="Enter your ID" required>
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-1.5 ml-1">Password</label>
-                    <input type="password" id="password" class="form-input" placeholder="••••••••" required>
-                </div>
-                <button type="submit" id="loginBtn" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-blue-500/30 transition-all active:scale-[0.98] flex justify-center items-center gap-2 mt-4">
-                    <span>เข้าสู่ระบบ</span>
-                    <div id="loginLoader" class="hidden w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                <div><label class="block text-sm font-semibold mb-1 ml-1">Username</label><input type="text" id="username" class="form-input" required></div>
+                <div><label class="block text-sm font-semibold mb-1 ml-1">Password</label><input type="password" id="password" class="form-input" required></div>
+                <button type="submit" id="loginBtn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl shadow-lg transition-all active:scale-[0.98] flex justify-center items-center gap-2 mt-2">
+                    <span>เข้าสู่ระบบ</span><div id="loginLoader" class="hidden w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                 </button>
             </form>
         </div>
@@ -102,132 +96,95 @@
 
     <div id="mainApp" class="hidden flex-col min-h-screen">
         
-        <header class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white shadow-lg sticky top-0 z-40">
+        <header class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white shadow-lg sticky top-0 z-40">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col md:flex-row justify-between items-center py-4 gap-4">
+                <div class="flex flex-col md:flex-row justify-between items-center py-3 gap-4">
                     <div class="flex items-center gap-3 w-full md:w-auto">
-                        <div class="bg-white/10 p-2 rounded-lg backdrop-blur-sm border border-white/10">
-                            <svg class="w-6 h-6 text-blue-100" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
-                        </div>
-                        <div>
-                            <h1 class="text-xl font-bold leading-none tracking-wide">Palliative Care</h1>
-                            <p class="text-xs text-blue-200 mt-1 opacity-80">Smart Pharmacy System</p>
-                        </div>
+                        <div class="bg-white/20 p-2 rounded-lg backdrop-blur-sm"><svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></div>
+                        <div><h1 class="text-lg font-bold leading-none">Palliative Care</h1><p class="text-xs text-emerald-100 mt-0.5">Nopparat Hospital</p></div>
                     </div>
-
-                    <div class="flex-1 max-w-2xl w-full relative group">
-                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                            <svg class="h-5 w-5 text-indigo-300 group-focus-within:text-indigo-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                        </div>
-                        <input type="text" id="smartSearch" class="block w-full pl-11 pr-4 py-2.5 border-0 rounded-full leading-5 bg-white/10 text-white placeholder-blue-200 focus:outline-none focus:bg-white focus:text-slate-900 focus:ring-0 transition-all shadow-inner" placeholder="ค้นหา HN หรือ ชื่อผู้ป่วย (Enter)...">
+                    <div class="flex-1 max-w-xl w-full relative">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-emerald-200"><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></span>
+                        <input type="text" id="smartSearch" class="block w-full pl-10 pr-4 py-2 border-0 rounded-full bg-white/20 text-white placeholder-emerald-100 focus:outline-none focus:bg-white focus:text-slate-900 transition-all shadow-inner" placeholder="ค้นหา HN หรือ ชื่อผู้ป่วย...">
                     </div>
-
                     <div class="flex items-center gap-3 w-full md:w-auto justify-end">
-                        <div class="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/10">
-                            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                            <span id="userDisplay" class="text-sm font-medium">User</span>
-                        </div>
-                        <button onclick="logout()" class="text-blue-100 hover:text-white hover:bg-white/10 px-3 py-1.5 rounded-lg text-sm font-semibold transition-all">ออกจากระบบ</button>
+                        <span id="userDisplay" class="text-sm font-medium bg-white/20 px-3 py-1 rounded-full border border-white/10"></span>
+                        <button onclick="logout()" class="text-emerald-100 hover:text-white px-3 py-1 rounded hover:bg-white/10 transition-colors">ออก</button>
                     </div>
                 </div>
-
-                <nav class="flex space-x-2 overflow-x-auto pb-0 pt-2 no-scrollbar">
-                    <button onclick="switchTab('addPatient')" class="nav-link active px-5 py-3 rounded-t-xl text-sm whitespace-nowrap">1. เพิ่มผู้ป่วย</button>
-                    <button onclick="switchTab('individual')" class="nav-link px-5 py-3 rounded-t-xl text-sm whitespace-nowrap">2. ข้อมูลรายบุคคล</button>
-                    <button onclick="switchTab('overall')" class="nav-link px-5 py-3 rounded-t-xl text-sm whitespace-nowrap">3. ภาพรวม</button>
-                    <button onclick="switchTab('dashboard')" class="nav-link px-5 py-3 rounded-t-xl text-sm whitespace-nowrap">4. Dashboard</button>
-                    <button onclick="switchTab('editPatient')" class="nav-link px-5 py-3 rounded-t-xl text-sm whitespace-nowrap">5. แก้ไขข้อมูล</button>
-                    <button onclick="switchTab('report')" class="nav-link px-5 py-3 rounded-t-xl text-sm whitespace-nowrap">6. ดึงรายงาน</button>
+                <nav class="flex space-x-1 overflow-x-auto pt-1 no-scrollbar">
+                    <button onclick="switchTab('addPatient')" class="nav-link active px-4 py-2.5 rounded-t-lg text-sm whitespace-nowrap">1. เพิ่มผู้ป่วย</button>
+                    <button onclick="switchTab('individual')" class="nav-link px-4 py-2.5 rounded-t-lg text-sm whitespace-nowrap">2. ข้อมูลรายบุคคล</button>
+                    <button onclick="switchTab('overall')" class="nav-link px-4 py-2.5 rounded-t-lg text-sm whitespace-nowrap">3. ภาพรวม</button>
+                    <button onclick="switchTab('dashboard')" class="nav-link px-4 py-2.5 rounded-t-lg text-sm whitespace-nowrap">4. Dashboard</button>
+                    <button onclick="switchTab('editPatient')" class="nav-link px-4 py-2.5 rounded-t-lg text-sm whitespace-nowrap">5. แก้ไขข้อมูล</button>
+                    <button onclick="switchTab('report')" class="nav-link px-4 py-2.5 rounded-t-lg text-sm whitespace-nowrap">6. ดึงรายงาน</button>
                 </nav>
             </div>
         </header>
 
-        <main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 fade-in">
+        <main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 fade-in">
 
             <div id="tab-addPatient" class="tab-content">
                 <div class="section-card p-8 max-w-4xl mx-auto">
-                    <div class="flex items-center gap-3 mb-8 border-b pb-4">
-                        <div class="bg-emerald-100 p-2.5 rounded-xl text-emerald-600"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path></svg></div>
-                        <h2 class="text-2xl font-bold text-slate-800">ลงทะเบียนผู้ป่วยใหม่</h2>
+                    <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+                        <div class="bg-emerald-100 p-2 rounded-lg text-emerald-600"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path></svg></div>
+                        <h2 class="text-xl font-bold text-slate-800">ลงทะเบียนผู้ป่วยใหม่</h2>
                     </div>
                     <form id="addPatientForm" class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div><label class="block text-sm font-semibold mb-1 ml-1 text-slate-600">HN *</label><input type="text" name="hn" class="form-input" required></div>
-                            <div><label class="block text-sm font-semibold mb-1 ml-1 text-slate-600">วันที่ลงทะเบียน</label><input type="date" name="regDate" class="form-input" required></div>
-                            <div><label class="block text-sm font-semibold mb-1 ml-1 text-slate-600">ชื่อจริง</label><input type="text" name="fname" class="form-input" required></div>
-                            <div><label class="block text-sm font-semibold mb-1 ml-1 text-slate-600">นามสกุล</label><input type="text" name="lname" class="form-input" required></div>
-                            <div><label class="block text-sm font-semibold mb-1 ml-1 text-slate-600">สถานะ</label>
-                                <select name="status" class="form-input cursor-pointer">
-                                    <option value="Active">🟢 Active</option><option value="Palliative Only">🟡 Palliative Only</option>
-                                    <option value="End of Life">🟠 End of Life</option><option value="Deceased">⚫ Deceased</option><option value="Discharged">⚪ Discharged</option>
-                                </select>
-                            </div>
-                            <div><label class="block text-sm font-semibold mb-1 ml-1 text-slate-600">Diagnosis</label><input type="text" name="diagnosis" class="form-input" required></div>
-                            <div class="md:col-span-2"><label class="block text-sm font-semibold mb-1 ml-1 text-slate-600">โรคร่วม</label><textarea name="comorbidities" rows="2" class="form-input"></textarea></div>
-                            <div class="md:col-span-2"><label class="block text-sm font-semibold mb-1 ml-1 text-indigo-600">ประวัติโดยย่อเกี่ยวกับโรคและการรักษา</label><textarea name="historySummary" rows="3" class="form-input bg-indigo-50/50 border-indigo-100 focus:border-indigo-300"></textarea></div>
+                            <div><label class="block text-sm font-semibold mb-1 text-slate-600">HN *</label><input type="text" name="hn" class="form-input" required></div>
+                            <div><label class="block text-sm font-semibold mb-1 text-slate-600">วันที่ลงทะเบียน</label><input type="date" name="regDate" class="form-input" required></div>
+                            <div><label class="block text-sm font-semibold mb-1 text-slate-600">ชื่อจริง</label><input type="text" name="fname" class="form-input" required></div>
+                            <div><label class="block text-sm font-semibold mb-1 text-slate-600">นามสกุล</label><input type="text" name="lname" class="form-input" required></div>
+                            <div><label class="block text-sm font-semibold mb-1 text-slate-600">สถานะ</label><select name="status" class="form-input"><option value="Active">🟢 Active</option><option value="Palliative Only">🟡 Palliative Only</option><option value="End of Life">🟠 End of Life</option><option value="Deceased">⚫ Deceased</option><option value="Discharged">⚪ Discharged</option></select></div>
+                            <div><label class="block text-sm font-semibold mb-1 text-slate-600">Diagnosis</label><input type="text" name="diagnosis" class="form-input" required></div>
+                            <div class="md:col-span-2"><label class="block text-sm font-semibold mb-1 text-slate-600">โรคร่วม</label><textarea name="comorbidities" rows="2" class="form-input"></textarea></div>
+                            <div class="md:col-span-2"><label class="block text-sm font-semibold mb-1 text-emerald-600">ประวัติโดยย่อ</label><textarea name="historySummary" rows="3" class="form-input"></textarea></div>
                         </div>
-                        <div class="pt-6 flex justify-end gap-3">
-                            <button type="reset" class="px-6 py-2.5 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 font-medium transition-colors">ล้างค่า</button>
-                            <button type="submit" class="px-8 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-xl hover:shadow-lg hover:shadow-emerald-500/30 font-bold transition-all transform active:scale-95">💾 บันทึกข้อมูล</button>
+                        <div class="pt-4 flex justify-end gap-3">
+                            <button type="reset" class="px-6 py-2.5 rounded-lg border border-slate-200 hover:bg-slate-50 font-medium">ล้างค่า</button>
+                            <button type="submit" class="px-8 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-bold shadow-lg shadow-emerald-500/20">บันทึกข้อมูล</button>
                         </div>
                     </form>
                 </div>
             </div>
 
             <div id="tab-individual" class="tab-content hidden">
-                <div id="manualSearchSection" class="section-card p-8 mb-8 text-center max-w-2xl mx-auto">
-                    <h3 class="text-xl font-bold text-slate-700 mb-6">ค้นหาข้อมูลผู้ป่วย</h3>
+                <div id="manualSearchSection" class="section-card p-8 mb-6 max-w-3xl mx-auto text-center">
+                    <h3 class="text-xl font-bold text-slate-700 mb-4">ค้นหาข้อมูลผู้ป่วย</h3>
                     <div class="flex gap-3">
                         <input type="text" id="searchHNInput" placeholder="ระบุ HN หรือ ชื่อ-สกุล..." class="form-input text-lg">
-                        <button onclick="searchPatient()" class="px-8 bg-blue-600 text-white rounded-xl hover:bg-blue-700 font-bold shadow-md transition-all">ค้นหา</button>
+                        <button onclick="searchPatient()" class="px-8 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 font-bold shadow-md">ค้นหา</button>
                     </div>
-                    <div class="mt-6 overflow-hidden rounded-xl border border-slate-100">
+                    <div class="mt-6 rounded-lg border border-slate-100 overflow-hidden">
                         <table class="w-full text-left text-sm"><tbody id="patientListBody" class="divide-y divide-slate-100 bg-white"></tbody></table>
                     </div>
                 </div>
 
                 <div id="patientDetailSection" class="hidden">
-                    <button onclick="backToSearch()" class="mb-4 flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors">← กลับไปค้นหา</button>
-                    
+                    <button onclick="backToSearch()" class="mb-4 text-emerald-600 hover:underline font-medium">← กลับไปค้นหา</button>
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-                        <div class="section-card p-6 relative overflow-hidden bg-gradient-to-br from-white to-blue-50/50">
-                            <div class="absolute top-0 right-0 p-4 opacity-10"><svg class="w-24 h-24 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div>
-                            <h3 class="text-2xl font-bold text-slate-800 mb-1" id="detailName">...</h3>
-                            <div class="inline-block bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-mono font-bold mb-4" id="detailHN">...</div>
+                        <div class="section-card p-6 border-t-4 border-emerald-500">
+                            <h3 class="text-2xl font-bold text-slate-800" id="detailName">...</h3>
+                            <div class="inline-block bg-slate-100 px-2 py-0.5 rounded text-xs font-mono font-bold mt-1 mb-4 text-slate-500" id="detailHN">...</div>
                             <div class="space-y-2 text-sm text-slate-600">
-                                <p><span class="font-semibold text-slate-800">Status:</span> <span id="detailStatus"></span></p>
-                                <p><span class="font-semibold text-slate-800">Dx:</span> <span id="detailDx"></span></p>
-                                <div class="bg-white/60 p-3 rounded-lg border border-blue-100 mt-3">
-                                    <p class="font-semibold text-indigo-700 mb-1">ประวัติโดยย่อ:</p>
-                                    <p id="detailHistorySummary" class="text-slate-500 italic leading-relaxed">-</p>
-                                </div>
+                                <p><span class="font-bold">Status:</span> <span id="detailStatus"></span></p>
+                                <p><span class="font-bold">Dx:</span> <span id="detailDx"></span></p>
+                                <div class="bg-slate-50 p-3 rounded border border-slate-100 mt-2"><p class="font-bold text-emerald-700 mb-1">ประวัติโดยย่อ:</p><p id="detailHistorySummary" class="text-slate-500 italic">-</p></div>
                             </div>
-                            <button onclick="openVisitModal()" class="mt-6 w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold shadow-lg shadow-blue-500/20 transition-all active:scale-[0.98]">
-                                + เพิ่ม Visit ใหม่
-                            </button>
+                            <button onclick="openVisitModal()" class="mt-6 w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-bold shadow-md transition-transform active:scale-[0.98]">+ เพิ่ม Visit ใหม่</button>
                         </div>
-
                         <div class="lg:col-span-2 section-card p-6 flex flex-col">
-                            <h4 class="font-bold text-slate-700 mb-4 flex items-center gap-2"><span class="w-2 h-2 bg-red-500 rounded-full"></span> แนวโน้มระดับความปวด (Pain Score)</h4>
+                            <h4 class="font-bold text-slate-700 mb-4">Pain Score Trend</h4>
                             <div class="flex-1 relative w-full h-64"><canvas id="painChart"></canvas></div>
                         </div>
                     </div>
-
                     <div class="section-card p-6">
-                        <h4 class="font-bold text-lg text-slate-800 mb-6 border-b pb-3">ประวัติการรักษา</h4>
+                        <h4 class="font-bold text-lg text-slate-800 mb-4 border-b pb-2">ประวัติการรักษา (คลิกเพื่อดูรายละเอียด)</h4>
                         <div class="overflow-x-auto rounded-lg border border-slate-100">
                             <table class="w-full text-sm text-left">
-                                <thead class="bg-slate-50 text-slate-500 font-semibold uppercase tracking-wider">
-                                    <tr>
-                                        <th class="p-4">วันที่</th>
-                                        <th class="p-4">อาการ/DRPs</th>
-                                        <th class="p-4">การรักษา</th>
-                                        <th class="p-4 text-center">Pain</th>
-                                        <th class="p-4 text-center">PPS/ECOG</th>
-                                        <th class="p-4 text-center">File</th>
-                                        <th class="p-4">ผู้บันทึก</th>
-                                    </tr>
-                                </thead>
+                                <thead class="bg-slate-50 text-slate-500 font-semibold uppercase"><tr><th class="p-3">วันที่</th><th class="p-3">อาการ/DRPs</th><th class="p-3">การรักษา</th><th class="p-3 text-center">Pain</th><th class="p-3 text-center">PPS/ECOG</th><th class="p-3 text-center">File</th><th class="p-3">ผู้บันทึก</th></tr></thead>
                                 <tbody id="visitHistoryBody" class="divide-y divide-slate-100 bg-white"></tbody>
                             </table>
                         </div>
@@ -237,242 +194,160 @@
 
             <div id="tab-overall" class="tab-content hidden">
                 <div class="section-card p-6">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-xl font-bold text-slate-800">ภาพรวมการให้บริการ</h2>
-                        <button onclick="loadOverallData()" class="text-blue-600 bg-blue-50 hover:bg-blue-100 px-4 py-2 rounded-lg text-sm font-bold transition-colors">Refresh Data</button>
-                    </div>
-                    <div class="overflow-x-auto max-h-[70vh] rounded-xl border border-slate-100">
-                        <table class="w-full text-sm text-left">
-                            <thead class="bg-slate-50 sticky-th text-slate-600 font-semibold shadow-sm">
-                                <tr>
-                                    <th class="p-4">วันที่</th><th class="p-4">HN</th><th class="p-4">ชื่อผู้ป่วย</th><th class="p-4">อาการสำคัญ</th><th class="p-4 text-center">Pain</th><th class="p-4">ผู้บันทึก</th>
-                                </tr>
-                            </thead>
-                            <tbody id="overallTableBody" class="divide-y divide-slate-100 bg-white"></tbody>
-                        </table>
-                    </div>
+                    <div class="flex justify-between items-center mb-4"><h2 class="text-xl font-bold text-slate-800">ภาพรวมการให้บริการ</h2><button onclick="loadOverallData()" class="text-emerald-600 bg-emerald-50 hover:bg-emerald-100 px-4 py-2 rounded-lg text-sm font-bold">Refresh Data</button></div>
+                    <div class="overflow-x-auto max-h-[75vh] rounded-lg border border-slate-100"><table class="w-full text-sm text-left"><thead class="bg-slate-50 sticky-th text-slate-600"><tr><th class="p-3">วันที่</th><th class="p-3">HN</th><th class="p-3">ชื่อผู้ป่วย</th><th class="p-3">อาการสำคัญ</th><th class="p-3 text-center">Pain</th><th class="p-3">ผู้บันทึก</th></tr></thead><tbody id="overallTableBody" class="divide-y divide-slate-100 bg-white"></tbody></table></div>
                 </div>
             </div>
 
             <div id="tab-dashboard" class="tab-content hidden">
-                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div class="section-card p-6 border-l-4 border-blue-500">
-                        <p class="text-slate-500 text-sm font-medium uppercase tracking-wide">ผู้ป่วยทั้งหมด</p>
-                        <p class="text-4xl font-bold text-slate-800 mt-2" id="statTotalPatients">-</p>
-                    </div>
-                    <div class="section-card p-6 border-l-4 border-emerald-500">
-                        <p class="text-slate-500 text-sm font-medium uppercase tracking-wide">Visit เดือนนี้</p>
-                        <p class="text-4xl font-bold text-slate-800 mt-2" id="statTotalVisits">-</p>
-                    </div>
-                     <div class="section-card p-6 border-l-4 border-red-500">
-                        <p class="text-slate-500 text-sm font-medium uppercase tracking-wide">High Pain (>7)</p>
-                        <p class="text-4xl font-bold text-slate-800 mt-2" id="statHighPain">-</p>
-                    </div>
+                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div class="section-card p-6 border-l-4 border-emerald-500"><p class="text-slate-500 text-sm font-bold uppercase">ผู้ป่วยทั้งหมด</p><p class="text-4xl font-bold text-slate-800 mt-2" id="statTotalPatients">-</p></div>
+                    <div class="section-card p-6 border-l-4 border-blue-500"><p class="text-slate-500 text-sm font-bold uppercase">Visit เดือนนี้</p><p class="text-4xl font-bold text-slate-800 mt-2" id="statTotalVisits">-</p></div>
+                     <div class="section-card p-6 border-l-4 border-red-500"><p class="text-slate-500 text-sm font-bold uppercase">High Pain (>7)</p><p class="text-4xl font-bold text-slate-800 mt-2" id="statHighPain">-</p></div>
                 </div>
-                <div class="section-card p-8 h-96"><canvas id="dashboardChart"></canvas></div>
+                <div class="section-card p-6 h-96"><canvas id="dashboardChart"></canvas></div>
             </div>
 
             <div id="tab-editPatient" class="tab-content hidden">
                 <div class="section-card p-8 max-w-4xl mx-auto">
                     <h2 class="text-xl font-bold text-slate-800 mb-6">แก้ไขข้อมูลผู้ป่วย</h2>
-                    <div class="flex gap-4 mb-8 pb-8 border-b border-slate-100">
-                        <input type="text" id="editSearchHN" placeholder="ระบุ HN เพื่อแก้ไข..." class="form-input flex-1">
-                        <button onclick="loadPatientForEdit()" class="bg-slate-800 text-white px-6 rounded-xl hover:bg-slate-700 font-bold">เรียกข้อมูล</button>
-                    </div>
+                    <div class="flex gap-4 mb-6 pb-6 border-b border-slate-100"><input type="text" id="editSearchHN" placeholder="ระบุ HN..." class="form-input flex-1"><button onclick="loadPatientForEdit()" class="bg-slate-700 text-white px-6 rounded-lg hover:bg-slate-800 font-bold">เรียกข้อมูล</button></div>
                     <form id="editPatientForm" class="hidden space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div><label class="block text-sm font-semibold mb-1 ml-1">HN</label><input type="text" name="hn" id="edit_hn" class="form-input bg-slate-100 text-slate-500 cursor-not-allowed" readonly></div>
-                            <div><label class="block text-sm font-semibold mb-1 ml-1">วันที่ลงทะเบียน</label><input type="date" name="regDate" id="edit_regDate" class="form-input"></div>
-                            <div><label class="block text-sm font-semibold mb-1 ml-1">ชื่อ</label><input type="text" name="fname" id="edit_fname" class="form-input"></div>
-                            <div><label class="block text-sm font-semibold mb-1 ml-1">นามสกุล</label><input type="text" name="lname" id="edit_lname" class="form-input"></div>
-                            <div><label class="block text-sm font-semibold mb-1 ml-1">สถานะ</label><select name="status" id="edit_status" class="form-input"><option value="Active">Active</option><option value="Palliative Only">Palliative Only</option><option value="End of Life">End of Life</option><option value="Deceased">Deceased</option><option value="Discharged">Discharged</option></select></div>
-                            <div><label class="block text-sm font-semibold mb-1 ml-1">Dx</label><input type="text" name="diagnosis" id="edit_diagnosis" class="form-input"></div>
-                            <div class="md:col-span-2"><label class="block text-sm font-semibold mb-1 ml-1">โรคร่วม</label><textarea name="comorbidities" id="edit_comorbidities" rows="2" class="form-input"></textarea></div>
-                            <div class="md:col-span-2"><label class="block text-sm font-semibold mb-1 ml-1 text-indigo-600">ประวัติโดยย่อ</label><textarea name="historySummary" id="edit_historySummary" rows="3" class="form-input bg-indigo-50/50 border-indigo-100"></textarea></div>
+                            <div><label class="block text-sm font-semibold mb-1">HN</label><input type="text" name="hn" id="edit_hn" class="form-input bg-slate-100" readonly></div>
+                            <div><label class="block text-sm font-semibold mb-1">วันที่ลงทะเบียน</label><input type="date" name="regDate" id="edit_regDate" class="form-input"></div>
+                            <div><label class="block text-sm font-semibold mb-1">ชื่อ</label><input type="text" name="fname" id="edit_fname" class="form-input"></div>
+                            <div><label class="block text-sm font-semibold mb-1">นามสกุล</label><input type="text" name="lname" id="edit_lname" class="form-input"></div>
+                            <div><label class="block text-sm font-semibold mb-1">สถานะ</label><select name="status" id="edit_status" class="form-input"><option value="Active">Active</option><option value="Palliative Only">Palliative Only</option><option value="End of Life">End of Life</option><option value="Deceased">Deceased</option><option value="Discharged">Discharged</option></select></div>
+                            <div><label class="block text-sm font-semibold mb-1">Dx</label><input type="text" name="diagnosis" id="edit_diagnosis" class="form-input"></div>
+                            <div class="md:col-span-2"><label class="block text-sm font-semibold mb-1">โรคร่วม</label><textarea name="comorbidities" id="edit_comorbidities" rows="2" class="form-input"></textarea></div>
+                            <div class="md:col-span-2"><label class="block text-sm font-semibold mb-1">ประวัติโดยย่อ</label><textarea name="historySummary" id="edit_historySummary" rows="3" class="form-input"></textarea></div>
                         </div>
-                        <div class="flex justify-end pt-4"><button type="submit" class="bg-amber-500 hover:bg-amber-600 text-white px-8 py-2.5 rounded-xl font-bold shadow-lg shadow-amber-500/20 transition-all">บันทึกการแก้ไข</button></div>
+                        <div class="flex justify-end pt-4"><button type="submit" class="bg-amber-500 hover:bg-amber-600 text-white px-8 py-2.5 rounded-lg font-bold">บันทึกการแก้ไข</button></div>
                     </form>
                 </div>
             </div>
 
             <div id="tab-report" class="tab-content hidden">
                 <div class="section-card p-12 max-w-3xl mx-auto text-center">
-                    <div class="bg-indigo-100 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 text-indigo-600"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg></div>
                     <h2 class="text-2xl font-bold text-slate-800 mb-2">ดึงรายงาน (Export)</h2>
-                    <p class="text-slate-500 mb-8">ข้อมูลจะถูกดึงตามรูปแบบคอลัมน์ Visit Note ครบถ้วน</p>
-                    
-                    <div class="flex flex-col md:flex-row gap-4 justify-center items-end mb-8">
-                        <div class="text-left w-full md:w-auto"><label class="block text-sm font-semibold mb-1 ml-1">ตั้งแต่วันที่</label><input type="date" id="rptStart" class="form-input"></div>
-                        <div class="text-left w-full md:w-auto"><label class="block text-sm font-semibold mb-1 ml-1">ถึงวันที่</label><input type="date" id="rptEnd" class="form-input"></div>
+                    <p class="text-slate-500 mb-8">เลือกช่วงเวลาที่ต้องการดึงข้อมูล</p>
+                    <div class="flex gap-4 justify-center items-end mb-8">
+                        <div class="text-left"><label class="block text-sm font-semibold mb-1">เริ่ม</label><input type="date" id="rptStart" class="form-input"></div>
+                        <div class="text-left"><label class="block text-sm font-semibold mb-1">ถึง</label><input type="date" id="rptEnd" class="form-input"></div>
                     </div>
-                    
                     <div class="flex gap-4 justify-center">
-                        <button onclick="exportReport('excel')" class="flex items-center gap-2 bg-emerald-600 text-white px-6 py-3 rounded-xl hover:bg-emerald-700 font-bold shadow-lg shadow-emerald-500/20 transition-all"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg> Download Excel</button>
-                        <button onclick="exportReport('word')" class="flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 font-bold shadow-lg shadow-blue-500/20 transition-all"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg> Download Word</button>
+                        <button onclick="exportReport('excel')" class="bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 font-bold shadow-md">Excel</button>
+                        <button onclick="exportReport('word')" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 font-bold shadow-md">Word</button>
                     </div>
                 </div>
             </div>
-
         </main>
     </div>
 
-    <div id="visitModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center z-[60] px-4 transition-opacity">
-        <div class="bg-white rounded-2xl w-full max-w-5xl max-h-[95vh] overflow-y-auto shadow-2xl flex flex-col animate-[fadeIn_0.3s_ease-out]">
-            <div class="border-b px-6 py-4 flex justify-between items-center bg-slate-50/50 sticky top-0 z-20 backdrop-blur-md">
-                <div>
-                    <h3 class="font-bold text-lg text-slate-800">🏥 บันทึก Visit Note (Comprehensive)</h3>
-                    <p class="text-xs text-slate-500">กรอกข้อมูลให้ครบถ้วนเพื่อการติดตามที่มีประสิทธิภาพ</p>
-                </div>
-                <button onclick="closeVisitModal()" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 text-slate-400 hover:text-red-500 transition-colors text-xl">&times;</button>
+    <div id="visitModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center z-[60] px-4">
+        <div class="bg-white rounded-xl w-full max-w-5xl max-h-[95vh] overflow-y-auto shadow-2xl flex flex-col">
+            <div class="border-b px-6 py-4 flex justify-between items-center bg-white sticky top-0 z-20">
+                <h3 class="font-bold text-lg text-slate-800">🏥 บันทึก Visit Note</h3>
+                <button onclick="closeVisitModal()" class="text-slate-400 hover:text-red-500 text-2xl">&times;</button>
             </div>
-            
-            <div class="p-8 overflow-y-auto flex-1 space-y-8">
+            <div class="p-8 overflow-y-auto flex-1 space-y-6">
                 <form id="visitForm" class="space-y-6">
                     <input type="hidden" id="visitHnHidden">
                     
-                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 bg-slate-50 p-6 rounded-xl border border-slate-100">
-                        <div class="md:col-span-3">
-                            <label class="block text-sm font-bold text-slate-700 mb-1.5">วันที่</label>
-                            <input type="date" id="visitDate" class="form-input bg-white" required>
-                        </div>
-                        <div class="md:col-span-2">
-                            <label class="block text-sm font-bold text-slate-700 mb-1.5">เวลา (นาที)</label>
-                            <input type="number" id="visitDuration" class="form-input bg-white" placeholder="เช่น 30">
-                        </div>
-                        <div class="md:col-span-3">
-                            <label class="block text-sm font-bold text-red-600 mb-1.5">Pain Score (0-10)</label>
-                            <div class="flex items-center gap-3 bg-white p-2 rounded-xl border border-slate-200">
-                                <input type="range" id="visitPainScore" min="0" max="10" class="w-full accent-red-500 cursor-pointer h-2 bg-slate-200 rounded-lg appearance-none" oninput="document.getElementById('pv').innerText=this.value">
-                                <span id="pv" class="text-xl font-bold text-red-600 min-w-[1.5rem] text-center">0</span>
-                            </div>
-                        </div>
-                        <div class="md:col-span-2">
-                            <label class="block text-sm font-bold text-blue-600 mb-1.5">PPS (%)</label>
-                            <select id="visitPPS" class="form-input bg-white text-sm">
-                                <option value="100">100 - Normal</option><option value="90">90</option><option value="80">80</option><option value="70">70</option><option value="60">60</option><option value="50">50</option><option value="40">40</option><option value="30">30</option><option value="20">20</option><option value="10">10</option><option value="0">0</option>
-                            </select>
-                        </div>
-                        <div class="md:col-span-2">
-                            <label class="block text-sm font-bold text-purple-600 mb-1.5">ECOG</label>
-                            <select id="visitECOG" class="form-input bg-white text-sm">
-                                <option value="0">0 - Active</option><option value="1">1 - Restricted</option><option value="2">2 - Self-care</option><option value="3">3 - Limited</option><option value="4">4 - Disabled</option>
-                            </select>
-                        </div>
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-4 bg-slate-50 p-6 rounded-xl border border-slate-100">
+                        <div class="md:col-span-3"><label class="block text-sm font-bold mb-1">วันที่</label><input type="date" id="visitDate" class="form-input" required></div>
+                        <div class="md:col-span-2"><label class="block text-sm font-bold mb-1">เวลา (นาที)</label><input type="number" id="visitDuration" class="form-input"></div>
+                        <div class="md:col-span-3"><label class="block text-sm font-bold text-red-600 mb-1">Pain (0-10)</label><div class="flex items-center gap-2 bg-white p-2 rounded border"><input type="range" id="visitPainScore" min="0" max="10" class="w-full accent-red-500" oninput="document.getElementById('pv').innerText=this.value"><span id="pv" class="font-bold text-red-600 text-lg">0</span></div></div>
+                        <div class="md:col-span-2"><label class="block text-sm font-bold text-blue-600 mb-1">PPS%</label><select id="visitPPS" class="form-input"><option value="100">100</option><option value="90">90</option><option value="80">80</option><option value="70">70</option><option value="60">60</option><option value="50">50</option><option value="40">40</option><option value="30">30</option><option value="20">20</option><option value="10">10</option><option value="0">0</option></select></div>
+                        <div class="md:col-span-2"><label class="block text-sm font-bold text-purple-600 mb-1">ECOG</label><select id="visitECOG" class="form-input"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></div>
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-6">
-                        <div><label class="block text-sm font-bold text-slate-700 mb-1.5">1. อาการสำคัญ / ประวัติ</label><textarea id="visitHistory" rows="4" class="form-input"></textarea></div>
-                        <div><label class="block text-sm font-bold text-slate-700 mb-1.5">2. การรักษา / ยาที่ปรับ</label><textarea id="visitRegimen" rows="4" class="form-input"></textarea></div>
+                        <div><label class="block text-sm font-bold mb-1">1. อาการสำคัญ / ประวัติ</label><textarea id="visitHistory" rows="4" class="form-input"></textarea></div>
+                        <div><label class="block text-sm font-bold mb-1">2. การรักษา / ยาที่ปรับ</label><textarea id="visitRegimen" rows="4" class="form-input"></textarea></div>
                     </div>
 
-                    <div class="bg-orange-50/60 p-6 rounded-xl border border-orange-100">
-                        <label class="block text-sm font-bold text-orange-800 mb-4 flex items-center gap-2"><span class="w-2 h-2 bg-orange-500 rounded-full"></span> 3. ปัญหาจากการใช้ยา (DRPs) - เลือกได้หลายข้อ</label>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-slate-700 mb-4">
-                            <label class="flex items-center gap-2 p-2 hover:bg-white rounded cursor-pointer transition-colors"><input type="checkbox" name="drpCheck" value="1. ไม่ได้รับยาที่สมควรได้รับ" class="rounded text-orange-500 focus:ring-orange-500"> 1. ไม่ได้รับยาที่สมควรได้รับ</label>
-                            <label class="flex items-center gap-2 p-2 hover:bg-white rounded cursor-pointer transition-colors"><input type="checkbox" name="drpCheck" value="2. ได้รับยาที่ไม่เหมาะสม" class="rounded text-orange-500 focus:ring-orange-500"> 2. ได้รับยาที่ไม่เหมาะสม</label>
-                            <label class="flex items-center gap-2 p-2 hover:bg-white rounded cursor-pointer transition-colors"><input type="checkbox" name="drpCheck" value="3. ได้รับขนาดยาน้อยเกินไป" class="rounded text-orange-500 focus:ring-orange-500"> 3. ได้รับขนาดยาน้อยเกินไป</label>
-                            <label class="flex items-center gap-2 p-2 hover:bg-white rounded cursor-pointer transition-colors"><input type="checkbox" name="drpCheck" value="4. เกิดอาการไม่พึงประสงค์" class="rounded text-orange-500 focus:ring-orange-500"> 4. เกิดอาการไม่พึงประสงค์</label>
-                            <label class="flex items-center gap-2 p-2 hover:bg-white rounded cursor-pointer transition-colors"><input type="checkbox" name="drpCheck" value="5. เกิดอันตรกิริยาระหว่างยา" class="rounded text-orange-500 focus:ring-orange-500"> 5. เกิดอันตรกิริยาระหว่างยา</label>
-                            <label class="flex items-center gap-2 p-2 hover:bg-white rounded cursor-pointer transition-colors"><input type="checkbox" name="drpCheck" value="6. ไม่ได้รับยาตามแพทย์สั่ง" class="rounded text-orange-500 focus:ring-orange-500"> 6. ไม่ได้รับยาตามแพทย์สั่ง</label>
-                            <label class="flex items-center gap-2 p-2 hover:bg-white rounded cursor-pointer transition-colors"><input type="checkbox" name="drpCheck" value="7. ได้รับยาที่ไม่มีข้อบ่งชี้" class="rounded text-orange-500 focus:ring-orange-500"> 7. ได้รับยาที่ไม่มีข้อบ่งชี้</label>
-                            <label class="flex items-center gap-2 p-2 hover:bg-white rounded cursor-pointer transition-colors"><input type="checkbox" name="drpCheck" value="8. ขาดความร่วมมือ" class="rounded text-orange-500 focus:ring-orange-500"> 8. ขาดความร่วมมือ</label>
-                            <label class="flex items-center gap-2 p-2 hover:bg-white rounded cursor-pointer transition-colors"><input type="checkbox" name="drpCheck" value="9. ไม่ได้ใช้ยาตามสั่ง" class="rounded text-orange-500 focus:ring-orange-500"> 9. ไม่ได้ใช้ยาตามสั่ง</label>
-                            <label class="flex items-center gap-2 p-2 hover:bg-white rounded cursor-pointer transition-colors"><input type="checkbox" name="drpCheck" value="10. ปัญหาอื่นๆ" class="rounded text-orange-500 focus:ring-orange-500"> 10. ปัญหาอื่นๆ</label>
+                    <div class="p-6 rounded-xl border border-slate-200">
+                        <label class="block text-sm font-bold text-orange-700 mb-3">3. ปัญหาจากการใช้ยา (DRPs) - เลือกได้หลายข้อ</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-slate-700 mb-3">
+                            <label class="flex items-center gap-2"><input type="checkbox" name="drpCheck" value="1. ไม่ได้รับยาที่สมควรได้รับ" class="text-emerald-600 focus:ring-emerald-500 rounded"> 1. ไม่ได้รับยาที่สมควรได้รับ</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" name="drpCheck" value="2. ได้รับยาที่ไม่เหมาะสม"> 2. ได้รับยาที่ไม่เหมาะสม</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" name="drpCheck" value="3. ได้รับขนาดยาน้อยเกินไป"> 3. ได้รับขนาดยาน้อยเกินไป</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" name="drpCheck" value="4. เกิดอาการไม่พึงประสงค์"> 4. เกิดอาการไม่พึงประสงค์</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" name="drpCheck" value="5. เกิดอันตรกิริยาระหว่างยา"> 5. เกิดอันตรกิริยาระหว่างยา</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" name="drpCheck" value="6. ไม่ได้รับยาตามแพทย์สั่ง"> 6. ไม่ได้รับยาตามแพทย์สั่ง</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" name="drpCheck" value="7. ได้รับยาที่ไม่มีข้อบ่งชี้"> 7. ได้รับยาที่ไม่มีข้อบ่งชี้</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" name="drpCheck" value="8. ขาดความร่วมมือ"> 8. ขาดความร่วมมือ</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" name="drpCheck" value="9. ไม่ได้ใช้ยาตามสั่ง"> 9. ไม่ได้ใช้ยาตามสั่ง</label>
+                            <label class="flex items-center gap-2"><input type="checkbox" name="drpCheck" value="10. ปัญหาอื่นๆ"> 10. ปัญหาอื่นๆ</label>
                         </div>
-                        <input type="text" id="visitDrpNote" class="form-input bg-white" placeholder="ระบุ DRPs เพิ่มเติม หรือ หมายเหตุ...">
+                        <input type="text" id="visitDrpNote" class="form-input" placeholder="ระบุเพิ่มเติม...">
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-6">
-                        <div><label class="block text-sm font-bold text-slate-700 mb-1.5">4. การแก้ไข / ป้องกัน / คำแนะนำ</label><textarea id="visitIntervention" rows="3" class="form-input bg-green-50/50 border-green-100 focus:border-green-300"></textarea></div>
-                        <div><label class="block text-sm font-bold text-slate-700 mb-1.5">5. ผลลัพธ์ (Outcome)</label><textarea id="visitOutcome" rows="3" class="form-input"></textarea></div>
+                        <div><label class="block text-sm font-bold mb-1">4. Intervention</label><textarea id="visitIntervention" rows="3" class="form-input"></textarea></div>
+                        <div><label class="block text-sm font-bold mb-1">5. Outcome</label><textarea id="visitOutcome" rows="3" class="form-input"></textarea></div>
                     </div>
 
-                    <div class="bg-blue-50/50 p-6 rounded-xl border border-blue-100">
-                        <h4 class="font-bold text-blue-800 text-sm mb-4 uppercase tracking-wide">Vital Signs & Labs</h4>
+                    <div class="p-6 rounded-xl border border-slate-200 bg-slate-50">
+                        <h4 class="font-bold text-slate-700 text-sm mb-3">Vital Signs & Labs</h4>
                         <div class="grid grid-cols-3 md:grid-cols-6 gap-3 text-sm">
-                            <div><label class="text-xs text-slate-500 ml-1">BP</label><input type="text" id="v_bp" class="form-input h-9 px-2 bg-white"></div>
-                            <div><label class="text-xs text-slate-500 ml-1">Pulse</label><input type="number" id="v_pulse" class="form-input h-9 px-2 bg-white"></div>
-                            <div><label class="text-xs text-slate-500 ml-1">O2</label><input type="number" id="v_o2" class="form-input h-9 px-2 bg-white"></div>
-                            <div><label class="text-xs text-slate-500 ml-1">Weight</label><input type="number" id="v_weight" class="form-input h-9 px-2 bg-white"></div>
-                            <div><label class="text-xs text-slate-500 ml-1">Height</label><input type="number" id="v_height" class="form-input h-9 px-2 bg-white"></div>
-                            <div><label class="text-xs text-slate-500 ml-1">BMI</label><input type="text" id="v_bmi" class="form-input h-9 px-2 bg-slate-100" readonly></div>
-                            
-                            <div><label class="text-xs text-slate-500 ml-1">eGFR</label><input type="text" id="l_egfr" class="form-input h-9 px-2 bg-white"></div>
-                            <div><label class="text-xs text-slate-500 ml-1">Cr</label><input type="number" id="l_cr" class="form-input h-9 px-2 bg-white"></div>
-                            <div><label class="text-xs text-slate-500 ml-1">Protein</label><input type="number" id="l_prot" class="form-input h-9 px-2 bg-white"></div>
-                            <div><label class="text-xs text-slate-500 ml-1">Albumin</label><input type="number" id="l_alb" class="form-input h-9 px-2 bg-white"></div>
-                            <div><label class="text-xs text-slate-500 ml-1">AST</label><input type="number" id="l_ast" class="form-input h-9 px-2 bg-white"></div>
-                            <div><label class="text-xs text-slate-500 ml-1">ALT</label><input type="number" id="l_alt" class="form-input h-9 px-2 bg-white"></div>
+                            <input type="text" id="v_bp" placeholder="BP" class="form-input">
+                            <input type="number" id="v_pulse" placeholder="Pulse" class="form-input">
+                            <input type="number" id="v_o2" placeholder="O2" class="form-input">
+                            <input type="number" id="v_weight" placeholder="Kg" class="form-input">
+                            <input type="number" id="v_height" placeholder="Cm" class="form-input">
+                            <input type="text" id="v_bmi" placeholder="BMI" class="form-input bg-slate-100" readonly>
+                            <input type="text" id="l_egfr" placeholder="eGFR" class="form-input">
+                            <input type="number" id="l_cr" placeholder="Cr" class="form-input">
+                            <input type="number" id="l_prot" placeholder="Prot" class="form-input">
+                            <input type="number" id="l_alb" placeholder="Alb" class="form-input">
+                            <input type="number" id="l_ast" placeholder="AST" class="form-input">
+                            <input type="number" id="l_alt" placeholder="ALT" class="form-input">
                         </div>
-                        <div class="mt-4">
-                            <label class="text-xs text-slate-500 ml-1">Lab อื่นๆ</label>
-                            <input type="text" id="l_other" class="form-input bg-white h-9">
-                        </div>
+                        <input type="text" id="l_other" placeholder="Lab อื่นๆ" class="form-input mt-3">
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm font-bold text-slate-700 mb-1.5">แนบไฟล์ (รูป/เอกสาร)</label>
-                            <div class="flex items-center justify-center w-full">
-                                <label class="flex flex-col items-center justify-center w-full h-24 border-2 border-slate-300 border-dashed rounded-xl cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
-                                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                        <p class="mb-1 text-sm text-slate-500"><span class="font-semibold">คลิกเพื่ออัปโหลด</span></p>
-                                        <p class="text-xs text-slate-400">PNG, JPG or PDF (MAX. 5MB)</p>
-                                    </div>
-                                    <input id="visitFile" type="file" class="hidden" />
-                                </label>
-                            </div>
-                            <p id="fileNameDisplay" class="text-xs text-slate-500 mt-1 pl-1 truncate"></p>
-                        </div>
-                        <div><label class="block text-sm font-bold text-slate-700 mb-1.5">Note (บันทึกเพิ่มเติม)</label><textarea id="visitNotes" rows="3" class="form-input"></textarea></div>
+                        <div><label class="block text-sm font-bold mb-1">แนบไฟล์</label><input type="file" id="visitFile" class="text-sm text-slate-500 w-full border rounded p-2 bg-white"></div>
+                        <div><label class="block text-sm font-bold mb-1">Note</label><input type="text" id="visitNotes" class="form-input"></div>
                     </div>
                 </form>
             </div>
-            <div class="p-6 bg-white border-t flex justify-end gap-3 rounded-b-2xl sticky bottom-0 z-20">
-                <button onclick="closeVisitModal()" class="px-6 py-2.5 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold transition-colors">ยกเลิก</button>
-                <button onclick="saveVisit()" class="px-8 py-2.5 bg-blue-600 text-white rounded-xl hover:bg-blue-700 font-bold shadow-lg shadow-blue-500/30 transition-transform active:scale-95">💾 บันทึก</button>
+            <div class="p-6 bg-white border-t flex justify-end gap-3 rounded-b-xl"><button onclick="closeVisitModal()" class="px-6 py-2.5 border rounded-lg hover:bg-slate-50">ยกเลิก</button><button onclick="saveVisit()" class="px-8 py-2.5 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 font-bold shadow-md">บันทึก</button></div>
+        </div>
+    </div>
+
+    <div id="viewVisitModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center z-[70] px-4">
+        <div class="bg-white rounded-xl w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl flex flex-col">
+            <div class="border-b px-6 py-4 flex justify-between items-center bg-slate-50 sticky top-0">
+                <h3 class="font-bold text-lg text-slate-800">📄 รายละเอียดการเยี่ยม</h3>
+                <button onclick="document.getElementById('viewVisitModal').classList.add('hidden')" class="text-2xl text-slate-400 hover:text-slate-600">&times;</button>
             </div>
+            <div class="p-8 space-y-6 text-sm text-slate-700" id="viewVisitContent"></div>
         </div>
     </div>
 
     <script>
         // ********************************************************************************
-        // ⚠️ ใส่ URL Web App ของคุณที่นี่ (ต้องลงท้ายด้วย /exec)
+        // ⚠️ ใส่ URL Web App ของคุณที่นี่
         // ********************************************************************************
         const API_URL = 'https://script.google.com/macros/s/AKfycbxWm8Xzcv8Gc0C90hdSc171D8tOyHuGc9mIlPWLAd1JJ4-R3u5vhcyCvqayPbY6lLkr/exec'; 
 
-        // --- MASTER FETCH FUNCTION ---
         async function fetchAPI(action, data = {}) {
-            const options = {
-                method: 'POST',
-                body: JSON.stringify({ action, ...data }) // text/plain automatically
-            };
-            try {
-                const response = await fetch(API_URL, options);
-                const text = await response.text();
-                return JSON.parse(text);
-            } catch (error) {
-                console.error("Fetch Error:", error);
-                throw error; // Let caller handle
-            }
+            const options = { method: 'POST', body: JSON.stringify({ action, ...data }) };
+            try { return JSON.parse(await (await fetch(API_URL, options)).text()); } 
+            catch (e) { console.error(e); throw e; }
         }
 
-        // --- VARIABLES ---
-        let currentUser = null;
-        let currentPatient = null;
-        let allPatients = [];
-        let painChartInstance = null;
-        let dashChartInstance = null;
+        let currentUser = null, currentPatient = null, allPatients = [], painChartInstance = null, dashChartInstance = null;
+        let currentVisitsData = []; // Cache for view detail
 
-        // --- AUTH ---
         document.getElementById('loginForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            const btn = document.getElementById('loginBtn');
-            const loader = document.getElementById('loginLoader');
-            btn.disabled = true; 
-            btn.querySelector('span').classList.add('hidden');
-            loader.classList.remove('hidden');
-
+            const btn = document.getElementById('loginBtn'), loader = document.getElementById('loginLoader');
+            btn.disabled = true; btn.querySelector('span').classList.add('hidden'); loader.classList.remove('hidden');
             try {
                 const res = await fetchAPI('login', { username: document.getElementById('username').value, password: document.getElementById('password').value });
                 if (res.success) {
@@ -481,56 +356,35 @@
                     document.getElementById('loginPage').classList.add('hidden');
                     document.getElementById('mainApp').classList.remove('hidden');
                     document.getElementById('mainApp').classList.add('flex');
-                    loadAllPatients();
-                    switchTab('dashboard');
-                } else {
-                    Swal.fire({ icon: 'error', title: 'เข้าสู่ระบบไม่สำเร็จ', text: res.message, confirmButtonColor: '#3b82f6' });
-                }
-            } catch (err) {
-                // Silent fail check: If API_URL is wrong, fetch throws.
-                Swal.fire({ icon: 'error', title: 'Connection Error', text: 'ไม่สามารถเชื่อมต่อ Server ได้', confirmButtonColor: '#3b82f6' });
-            } finally {
-                btn.disabled = false;
-                btn.querySelector('span').classList.remove('hidden');
-                loader.classList.add('hidden');
-            }
+                    loadAllPatients(); switchTab('dashboard');
+                } else Swal.fire('Error', res.message, 'error');
+            } catch (err) { Swal.fire('Error', 'Connection Error', 'error'); } 
+            finally { btn.disabled = false; btn.querySelector('span').classList.remove('hidden'); loader.classList.add('hidden'); }
         });
 
         function logout() { location.reload(); }
 
-        // --- TABS ---
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
-            
             document.getElementById(`tab-${tabId}`).classList.remove('hidden');
-            
-            // Map tabId to button index
-            const map = { 'addPatient':0, 'individual':1, 'overall':2, 'dashboard':3, 'editPatient':4, 'report':5 };
-            const btns = document.querySelectorAll('.nav-link');
-            if(map[tabId] !== undefined) btns[map[tabId]].classList.add('active');
-
+            const idx = ['addPatient','individual','overall','dashboard','editPatient','report'].indexOf(tabId);
+            if(idx !== -1) document.querySelectorAll('.nav-link')[idx].classList.add('active');
             if(tabId === 'overall') loadOverallData();
             if(tabId === 'dashboard') loadDashboard();
         }
 
-        // --- PATIENT LOGIC ---
         document.getElementById('addPatientForm').addEventListener('submit', async (e) => {
             e.preventDefault(); Swal.showLoading();
             try {
                 const res = await fetchAPI('addPatient', Object.fromEntries(new FormData(e.target)));
-                if(res.success) { 
-                    Swal.fire({ icon: 'success', title: 'บันทึกสำเร็จ', timer: 1500, showConfirmButton: false }); 
-                    e.target.reset(); loadAllPatients(); 
-                } else Swal.fire('Error', res.message, 'error');
+                if(res.success) { Swal.fire('Success', 'บันทึกสำเร็จ', 'success'); e.target.reset(); loadAllPatients(); }
+                else Swal.fire('Error', res.message, 'error');
             } catch(e) { Swal.fire('Error', e.message, 'error'); }
         });
 
         async function loadAllPatients() {
-            try {
-                const res = await fetchAPI('getPatients');
-                if(res.success) { allPatients = res.data; renderPatientList(allPatients); }
-            } catch(e){}
+            try { const res = await fetchAPI('getPatients'); if(res.success) { allPatients = res.data; renderPatientList(allPatients); } } catch(e){}
         }
 
         function renderPatientList(list) {
@@ -538,30 +392,20 @@
             tbody.innerHTML = list.length ? '' : '<tr><td colspan="4" class="p-6 text-center text-slate-400">ไม่พบข้อมูล</td></tr>';
             list.forEach(p => {
                 const tr = document.createElement('tr');
-                tr.className = 'hover:bg-blue-50/50 cursor-pointer transition-colors border-b border-slate-50 last:border-0';
+                tr.className = 'hover:bg-emerald-50 cursor-pointer border-b border-slate-50';
                 tr.onclick = () => { switchTab('individual'); selectPatient(p); };
-                tr.innerHTML = `
-                    <td class="px-6 py-4 font-mono text-sm text-indigo-600 font-bold">${p.hn}</td>
-                    <td class="px-6 py-4 text-sm font-medium text-slate-700">${p.fname} ${p.lname}</td>
-                    <td class="px-6 py-4 text-sm text-slate-500">${p.diagnosis}</td>
-                    <td class="px-6 py-4"><span class="px-2.5 py-1 text-xs rounded-full bg-slate-100 text-slate-600 border border-slate-200 font-medium">${p.status}</span></td>
-                `;
+                tr.innerHTML = `<td class="px-6 py-4 font-mono font-bold text-emerald-600">${p.hn}</td><td class="px-6 py-4">${p.fname} ${p.lname}</td><td class="px-6 py-4 text-slate-500">${p.diagnosis}</td><td class="px-6 py-4"><span class="px-2 py-1 bg-slate-100 rounded text-xs">${p.status}</span></td>`;
                 tbody.appendChild(tr);
             });
         }
-
         function searchPatient() {
             const q = document.getElementById('searchHNInput').value.toLowerCase();
-            renderPatientList(allPatients.filter(p => p.hn.toLowerCase().includes(q) || p.fname.toLowerCase().includes(q) || (p.fname+' '+p.lname).toLowerCase().includes(q)));
+            renderPatientList(allPatients.filter(p => p.hn.includes(q) || p.fname.toLowerCase().includes(q)));
         }
-        
-        // Smart Search Header
         document.getElementById('smartSearch').addEventListener('keyup', (e) => {
             if(e.key === 'Enter') {
-                const q = e.target.value.toLowerCase();
-                const found = allPatients.find(p => p.hn === q || p.fname.toLowerCase().includes(q));
-                if(found) { switchTab('individual'); selectPatient(found); e.target.value=''; }
-                else Swal.fire({toast:true, position:'top-end', icon:'warning', title:'ไม่พบข้อมูล', timer:2000, showConfirmButton:false});
+                const q = e.target.value; const f = allPatients.find(p => p.hn === q || p.fname.includes(q));
+                if(f) { switchTab('individual'); selectPatient(f); e.target.value=''; }
             }
         });
 
@@ -569,7 +413,6 @@
             currentPatient = p;
             document.getElementById('manualSearchSection').classList.add('hidden');
             document.getElementById('patientDetailSection').classList.remove('hidden');
-            
             document.getElementById('detailName').innerText = `${p.fname} ${p.lname}`;
             document.getElementById('detailHN').innerText = p.hn;
             document.getElementById('detailStatus').innerText = p.status;
@@ -577,98 +420,87 @@
             document.getElementById('detailHistorySummary').innerText = p.historySummary || '-';
 
             const tbody = document.getElementById('visitHistoryBody');
-            tbody.innerHTML = '<tr><td colspan="7" class="p-8 text-center text-slate-400">กำลังโหลดข้อมูล...</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="7" class="p-8 text-center">Loading...</td></tr>';
             
             const res = await fetchAPI('getVisits', { hn: p.hn });
             tbody.innerHTML = '';
             
             if(res.success && res.data.length > 0) {
-                res.data.forEach(v => {
+                currentVisitsData = res.data; // Store for modal
+                res.data.forEach((v, index) => {
                     const painClass = v.painScore >= 7 ? 'text-red-600 font-bold' : 'text-slate-600';
                     tbody.innerHTML += `
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="p-4 whitespace-nowrap text-slate-600">${v.date}</td>
-                            <td class="p-4 max-w-xs truncate text-slate-700" title="${v.history}\nDRP: ${v.drpList}">${v.history}</td>
-                            <td class="p-4 max-w-xs truncate text-slate-700" title="${v.regimen}">${v.regimen}</td>
+                        <tr class="hover:bg-slate-50 cursor-pointer" onclick="viewVisitDetail(${index})">
+                            <td class="p-4 whitespace-nowrap">${v.date}</td>
+                            <td class="p-4 max-w-xs truncate">${v.history}</td>
+                            <td class="p-4 max-w-xs truncate">${v.regimen}</td>
                             <td class="p-4 text-center ${painClass}">${v.painScore}</td>
-                            <td class="p-4 text-center text-xs text-slate-500">PPS:${v.pps}% E:${v.ecog}</td>
-                            <td class="p-4 text-center">${v.fileUrl ? `<a href="${v.fileUrl}" target="_blank" class="text-blue-500 hover:text-blue-700">📎</a>` : '-'}</td>
+                            <td class="p-4 text-center text-xs">P:${v.pps}% E:${v.ecog}</td>
+                            <td class="p-4 text-center">${v.fileUrl ? '📎' : '-'}</td>
                             <td class="p-4 text-xs text-slate-400">${v.recorder}</td>
                         </tr>`;
                 });
                 renderChart(res.data);
-            } else {
-                tbody.innerHTML = '<tr><td colspan="7" class="p-8 text-center text-slate-400">ยังไม่มีประวัติการรักษา</td></tr>';
-                renderChart([]);
-            }
+            } else { tbody.innerHTML = '<tr><td colspan="7" class="p-8 text-center text-slate-400">ยังไม่มีประวัติ</td></tr>'; renderChart([]); }
         }
         function backToSearch() { document.getElementById('patientDetailSection').classList.add('hidden'); document.getElementById('manualSearchSection').classList.remove('hidden'); }
 
         function renderChart(visits) {
             const ctx = document.getElementById('painChart').getContext('2d');
             if(painChartInstance) painChartInstance.destroy();
-            
             const sorted = [...visits].reverse();
-            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-            gradient.addColorStop(0, 'rgba(239, 68, 68, 0.2)');
-            gradient.addColorStop(1, 'rgba(239, 68, 68, 0)');
-
             painChartInstance = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: sorted.map(v => v.date.substring(5)),
-                    datasets: [{
-                        label: 'Pain Score',
-                        data: sorted.map(v => v.painScore),
-                        borderColor: '#ef4444',
-                        backgroundColor: gradient,
-                        fill: true,
-                        tension: 0.4,
-                        pointBackgroundColor: '#fff',
-                        pointBorderColor: '#ef4444',
-                        pointRadius: 4
-                    }]
+                    datasets: [{ label: 'Pain', data: sorted.map(v => v.painScore), borderColor: '#ef4444', backgroundColor: 'rgba(239,68,68,0.1)', fill: true, tension: 0.3 }]
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
-                    scales: { 
-                        y: { min: 0, max: 10, grid: { borderDash: [2, 4], color: '#f1f5f9' } },
-                        x: { grid: { display: false } }
-                    }
-                }
+                options: { responsive: true, maintainAspectRatio: false, scales: { y: { min: 0, max: 10 } } }
             });
         }
 
-        // --- VISIT MODAL ---
-        const visitFileInp = document.getElementById('visitFile');
-        visitFileInp.addEventListener('change', function(){
-            const name = this.files[0] ? this.files[0].name : '';
-            document.getElementById('fileNameDisplay').innerText = name;
-        });
+        // --- NEW: VIEW DETAIL MODAL ---
+        function viewVisitDetail(index) {
+            const v = currentVisitsData[index];
+            const content = `
+                <div class="grid grid-cols-2 gap-4 border-b pb-4">
+                    <div><p class="text-xs text-slate-400">วันที่</p><p class="font-bold text-lg">${v.date}</p></div>
+                    <div><p class="text-xs text-slate-400">ผู้บันทึก</p><p>${v.recorder}</p></div>
+                    <div><p class="text-xs text-slate-400">Pain Score</p><p class="font-bold text-red-600 text-xl">${v.painScore}</p></div>
+                    <div><p class="text-xs text-slate-400">Status</p><p>PPS: ${v.pps}% / ECOG: ${v.ecog}</p></div>
+                </div>
+                <div><p class="font-bold mb-1">อาการสำคัญ / ประวัติ</p><div class="bg-slate-50 p-3 rounded border">${v.history || '-'}</div></div>
+                <div><p class="font-bold mb-1">การรักษา / ยา</p><div class="bg-slate-50 p-3 rounded border">${v.regimen || '-'}</div></div>
+                <div><p class="font-bold mb-1 text-orange-600">DRPs</p><div class="bg-orange-50 p-3 rounded border border-orange-100 text-orange-800">${v.drpList || '-'} <br><span class="text-xs text-slate-500">Note: ${v.drpNote || '-'}</span></div></div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div><p class="font-bold mb-1">Intervention</p><div class="bg-green-50 p-3 rounded border border-green-100">${v.intervention || '-'}</div></div>
+                    <div><p class="font-bold mb-1">Outcome</p><div class="bg-slate-50 p-3 rounded border">${v.outcome || '-'}</div></div>
+                </div>
+                <div class="bg-blue-50 p-3 rounded border border-blue-100">
+                    <p class="font-bold text-blue-800 text-xs mb-2">Vitals & Labs</p>
+                    <div class="grid grid-cols-4 gap-2 text-xs">
+                        <p>BP: <b>${v.bp||'-'}</b></p><p>P: <b>${v.pulse||'-'}</b></p><p>O2: <b>${v.o2||'-'}</b></p><p>Wt: <b>${v.weight||'-'}</b></p>
+                        <p>eGFR: <b>${v.egfr||'-'}</b></p><p>Cr: <b>${v.creatinine||'-'}</b></p><p>Alb: <b>${v.albumin||'-'}</b></p><p>Other: <b>${v.otherLabs||'-'}</b></p>
+                    </div>
+                </div>
+                ${v.fileUrl ? `<div class="mt-4"><a href="${v.fileUrl}" target="_blank" class="text-blue-600 underline font-bold">📎 เปิดไฟล์แนบ</a></div>` : ''}
+            `;
+            document.getElementById('viewVisitContent').innerHTML = content;
+            document.getElementById('viewVisitModal').classList.remove('hidden');
+            document.getElementById('viewVisitModal').classList.add('flex');
+        }
 
+        // --- VISIT MODAL ---
         function openVisitModal() {
             document.getElementById('visitForm').reset();
-            document.getElementById('fileNameDisplay').innerText = '';
             document.querySelectorAll('input[name="drpCheck"]').forEach(c => c.checked = false);
-            
             document.getElementById('visitHnHidden').value = currentPatient.hn;
             document.getElementById('visitDate').value = new Date().toISOString().split('T')[0];
             document.getElementById('visitPainScore').value = 0; document.getElementById('pv').innerText = '0';
-            
-            const modal = document.getElementById('visitModal');
-            modal.classList.remove('hidden');
-            setTimeout(() => modal.classList.add('flex'), 10); // Trigger transition if needed
-            modal.classList.add('flex');
+            document.getElementById('visitModal').classList.remove('hidden'); document.getElementById('visitModal').classList.add('flex');
         }
-        function closeVisitModal() { 
-            const modal = document.getElementById('visitModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
+        function closeVisitModal() { document.getElementById('visitModal').classList.add('hidden'); document.getElementById('visitModal').classList.remove('flex'); }
 
-        // Auto BMI
         function calcBMI() {
              const w = parseFloat(document.getElementById('v_weight').value);
              const h = parseFloat(document.getElementById('v_height').value);
@@ -678,21 +510,16 @@
         document.getElementById('v_height').addEventListener('change', calcBMI);
 
         async function saveVisit() {
-            Swal.fire({ title: 'กำลังบันทึก...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
-            
+            Swal.showLoading();
             const drps = Array.from(document.querySelectorAll('input[name="drpCheck"]:checked')).map(c => c.value).join(', ');
             
             let fileData = null, fileName = null;
             const fileInput = document.getElementById('visitFile');
             if (fileInput.files[0]) {
                 const file = fileInput.files[0];
-                if(file.size > 5000000) { Swal.fire('Error', 'File size > 5MB', 'error'); return; }
+                if(file.size > 5000000) { Swal.fire('Error', 'File > 5MB', 'error'); return; }
                 fileName = file.name;
-                fileData = await new Promise(r => { 
-                    const rd = new FileReader(); 
-                    rd.onload = e => r(e.target.result); 
-                    rd.readAsDataURL(file); 
-                });
+                fileData = await new Promise(r => { const rd = new FileReader(); rd.onload=e=>r(e.target.result); rd.readAsDataURL(file); });
             }
 
             const payload = {
@@ -708,7 +535,6 @@
                 drpNote: document.getElementById('visitDrpNote').value,
                 intervention: document.getElementById('visitIntervention').value,
                 outcome: document.getElementById('visitOutcome').value,
-                // Vitals
                 bp: document.getElementById('v_bp').value, pulse: document.getElementById('v_pulse').value, o2: document.getElementById('v_o2').value,
                 weight: document.getElementById('v_weight').value, height: document.getElementById('v_height').value, bmi: document.getElementById('v_bmi').value,
                 egfr: document.getElementById('l_egfr').value, creatinine: document.getElementById('l_cr').value, protein: document.getElementById('l_prot').value,
@@ -720,11 +546,8 @@
 
             try {
                 const res = await fetchAPI('addVisit', payload);
-                if(res.success) {
-                    Swal.fire({ icon: 'success', title: 'บันทึกเรียบร้อย', timer: 1500, showConfirmButton: false });
-                    closeVisitModal();
-                    selectPatient(currentPatient);
-                } else Swal.fire('Error', res.message, 'error');
+                if(res.success) { Swal.fire({ icon:'success', title:'บันทึกสำเร็จ', timer:1500, showConfirmButton:false }); closeVisitModal(); selectPatient(currentPatient); }
+                else Swal.fire('Error', res.message, 'error');
             } catch(e) { Swal.fire('Error', e.message, 'error'); }
         }
 
@@ -735,22 +558,8 @@
             try {
                 const res = await fetchAPI('getAllVisits');
                 tbody.innerHTML = '';
-                if(res.data.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="6" class="p-8 text-center text-slate-400">ไม่พบข้อมูล</td></tr>';
-                    return;
-                }
-                
-                res.data.slice(0,100).forEach(v => {
-                    const painClass = v.painScore >= 7 ? 'text-red-600 font-bold' : 'text-slate-500';
-                    tbody.innerHTML += `
-                    <tr class="hover:bg-slate-50 border-b border-slate-50 last:border-0 transition-colors">
-                        <td class="p-4 text-slate-600 whitespace-nowrap">${v.date}</td>
-                        <td class="p-4 text-slate-500 font-mono text-xs">${v.hn}</td>
-                        <td class="p-4 text-indigo-600 font-medium cursor-pointer hover:underline" onclick="jumpToPatient('${v.hn}')">${v.patientName}</td>
-                        <td class="p-4 text-slate-500 truncate max-w-xs">${v.history}</td>
-                        <td class="p-4 text-center ${painClass}">${v.painScore}</td>
-                        <td class="p-4 text-slate-400 text-xs">${v.recorder}</td>
-                    </tr>`;
+                res.data.slice(0, 100).forEach(v => {
+                    tbody.innerHTML += `<tr class="border-b"><td class="p-4">${v.date}</td><td class="p-4 text-slate-500">${v.hn}</td><td class="p-4 font-bold text-emerald-600 cursor-pointer" onclick="jumpToPatient('${v.hn}')">${v.patientName}</td><td class="p-4 truncate max-w-xs">${v.history}</td><td class="p-4 text-center ${v.painScore>=7?'text-red-600 font-bold':''}">${v.painScore}</td><td class="p-4 text-xs">${v.recorder}</td></tr>`;
                 });
                 window.allVisitsData = res.data; 
             } catch(e){}
@@ -761,22 +570,14 @@
             document.getElementById('statTotalPatients').innerText = allPatients.length;
             const visits = window.allVisitsData || [];
             document.getElementById('statTotalVisits').innerText = visits.filter(v => new Date(v.date).getMonth() === new Date().getMonth()).length;
-            document.getElementById('statHighPain').innerText = visits.filter(v => v.painScore >= 7).length;
+            document.getElementById('statHighPain').innerText = visits.filter(v=>v.painScore>=7).length;
             
             const ctx = document.getElementById('dashboardChart').getContext('2d');
             if(dashChartInstance) dashChartInstance.destroy();
             dashChartInstance = new Chart(ctx, {
                 type: 'bar',
-                data: {
-                    labels: ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.'], // Dummy for demo
-                    datasets: [{ 
-                        label: 'จำนวนการบริบาล', 
-                        data: [12, 19, 3, 5, 2, 3], // Dummy
-                        backgroundColor: '#6366f1',
-                        borderRadius: 6
-                    }]
-                },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+                data: { labels: ['Total', 'High Pain'], datasets: [{ label: 'Cases', data: [visits.length, visits.filter(v=>v.painScore>=7).length], backgroundColor: ['#10b981', '#ef4444'] }] },
+                options: { responsive: true, maintainAspectRatio: false }
             });
         }
 
@@ -809,7 +610,7 @@
         async function exportReport(type) {
             const start = document.getElementById('rptStart').value;
             const end = document.getElementById('rptEnd').value;
-            if(!start || !end) return Swal.fire('กรุณาเลือกช่วงวันที่', '', 'warning');
+            if(!start || !end) return Swal.fire('เลือกวันที่ก่อน', '', 'warning');
             Swal.showLoading();
             const res = await fetchAPI('getReportData', {startDate:start, endDate:end});
             if(res.success && res.data.length > 0) {
@@ -817,27 +618,16 @@
                     const ws = XLSX.utils.json_to_sheet(res.data);
                     const wb = XLSX.utils.book_new();
                     XLSX.utils.book_append_sheet(wb, ws, "Report");
-                    XLSX.writeFile(wb, `Report_${start}_${end}.xlsx`);
+                    XLSX.writeFile(wb, `Report.xlsx`);
                 } else {
-                    let rows = '';
-                    res.data.forEach(d => {
-                        rows += `<tr>
-                            <td>${d['วันที่']}</td><td>${d['HN']}</td><td>${d['ชื่อ-นามสกุล']}</td>
-                            <td>${d['อาการสำคัญ/ประวัติ']}</td><td>${d['การรักษา/ยาที่ปรับ']}</td>
-                            <td>${d['ปัญหาจากการใช้ยา (DRPs)']}</td><td>${d['ผลลัพธ์']}</td>
-                        </tr>`;
-                    });
-                    const html = `<html><head><meta charset='utf-8'></head><body>
-                        <h2 style="text-align:center">รายงาน Palliative Care</h2>
-                        <table border='1' style='border-collapse:collapse;width:100%'>
-                            <tr style='background:#eee'><th>วันที่</th><th>HN</th><th>ชื่อ</th><th>อาการ</th><th>การรักษา</th><th>DRPs</th><th>ผลลัพธ์</th></tr>
-                            ${rows}
-                        </table></body></html>`;
+                    let html = `<html><head><meta charset='utf-8'></head><body><table border='1'><thead><tr><th>Date</th><th>HN</th><th>Name</th><th>History</th><th>Outcome</th></tr></thead><tbody>`;
+                    res.data.forEach(d => html += `<tr><td>${d['วันที่']}</td><td>${d['HN']}</td><td>${d['ชื่อ-นามสกุล']}</td><td>${d['อาการสำคัญ/ประวัติ']}</td><td>${d['ผลลัพธ์']}</td></tr>`);
+                    html += `</tbody></table></body></html>`;
                     const blob = new Blob(['\ufeff', html], { type: 'application/msword' });
                     const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `Report.doc`; a.click();
                 }
                 Swal.close();
-            } else Swal.fire('ไม่พบข้อมูลในช่วงเวลานี้', '', 'info');
+            } else Swal.fire('ไม่พบข้อมูล', '', 'info');
         }
     </script>
 </body>
