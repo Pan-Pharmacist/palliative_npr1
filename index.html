@@ -332,7 +332,41 @@
     </div>
 
     <script>
-        const API_URL = 'https://script.google.com/macros/s/AKfycbzBCnmDp0Q8npuJL2-5HM6KgsleoXbu9p0r-EcSQn29YNeYvjA8so8P68DEFZooDnTA/exec'; // <--- เปลี่ยน URL ของคุณ
+        // ******************************************************
+        // ⚠️ ใส่ URL ใหม่ที่ได้จาก New Deployment ที่นี่
+        // ******************************************************
+        const API_URL = 'https://script.google.com/macros/s/AKfycbwBKIapIiBQXtcYaFntZX5rMEfG-KXdJn8OOD9d9iGKn3WwWYPeOa84GLBgpgv146tX/exec'; 
+
+        // --------------------------------------------------------------------------------
+        // FIX: Improved fetchAPI to handle CORS by sending text/plain (Magic Fix)
+        // --------------------------------------------------------------------------------
+        async function fetchAPI(action, data = {}) {
+            // ส่งเป็น text/plain เพื่อหลีกเลี่ยงการยิง Preflight (OPTIONS request) ที่ Google Script ไม่รองรับ
+            const options = {
+                method: 'POST',
+                redirect: 'follow', // จำเป็นสำหรับ GAS ที่จะ redirect 302
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8", 
+                },
+                body: JSON.stringify({ action, ...data })
+            };
+
+            try {
+                const response = await fetch(API_URL, options);
+                const text = await response.text(); 
+                
+                try {
+                    return JSON.parse(text); 
+                } catch (e) {
+                    console.error("Server returned non-JSON:", text);
+                    // ถ้า HTML ตอบกลับมาแสดงว่าอาจจะเป็นหน้า Error ของ Google
+                    throw new Error("Server Response Error: " + text.substring(0, 100));
+                }
+            } catch (error) {
+                console.error("Fetch Error:", error);
+                throw error;
+            }
+        }
 
         // Global Styles
         const style = document.createElement('style');
@@ -368,15 +402,13 @@
                     loadAllPatients();
                     switchTab('dashboard');
                 } else { Swal.fire('Login Failed', res.message, 'error'); }
-            } catch (err) { Swal.fire('Error', 'Connection Error', 'error'); } 
+            } catch (err) { 
+                Swal.fire('Connection Error', 'ไม่สามารถเชื่อมต่อ Server ได้ (CORS/Network)\nลอง Refresh หรือตรวจสอบ URL Script', 'error'); 
+            } 
             finally { btn.disabled = false; loader.classList.add('hidden'); }
         });
 
         function logout() { location.reload(); }
-        async function fetchAPI(action, data = {}) {
-            const response = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action, ...data }) });
-            return await response.json();
-        }
 
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
@@ -395,14 +427,18 @@
             e.preventDefault();
             Swal.showLoading();
             const formData = new FormData(e.target);
-            const res = await fetchAPI('addPatient', Object.fromEntries(formData));
-            if (res.success) { Swal.fire('Success', 'เพิ่มผู้ป่วยสำเร็จ', 'success'); e.target.reset(); loadAllPatients(); }
-            else Swal.fire('Error', res.message, 'error');
+            try {
+                const res = await fetchAPI('addPatient', Object.fromEntries(formData));
+                if (res.success) { Swal.fire('Success', 'เพิ่มผู้ป่วยสำเร็จ', 'success'); e.target.reset(); loadAllPatients(); }
+                else Swal.fire('Error', res.message, 'error');
+            } catch(e) { Swal.fire('Error', e.message, 'error'); }
         });
 
         async function loadAllPatients() {
-            const res = await fetchAPI('getPatients');
-            if(res.success) { allPatients = res.data; renderPatientList(allPatients); }
+            try {
+                const res = await fetchAPI('getPatients');
+                if(res.success) { allPatients = res.data; renderPatientList(allPatients); }
+            } catch(e) { console.error(e); }
         }
 
         function renderPatientList(list) {
@@ -469,7 +505,6 @@
         // --- VISIT MODAL ---
         function openVisitModal() {
             document.getElementById('visitForm').reset();
-            // Clear DRP Checks
             document.querySelectorAll('input[name="drpCheck"]').forEach(c => c.checked = false);
             
             document.getElementById('visitHnHidden').value = currentPatient.hn;
@@ -492,11 +527,9 @@
         async function saveVisit() {
             Swal.fire({ title: 'กำลังบันทึก...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
             
-            // Gather DRP Checkboxes
             const drpChecked = Array.from(document.querySelectorAll('input[name="drpCheck"]:checked')).map(c => c.value);
             const drpListString = drpChecked.join(', ');
 
-            // File
             const fileInput = document.getElementById('visitFile');
             let fileData = null, fileName = null;
             if (fileInput.files.length > 0) {
@@ -523,10 +556,8 @@
                 intervention: document.getElementById('visitIntervention').value,
                 outcome: document.getElementById('visitOutcome').value,
                 duration: document.getElementById('visitDuration').value,
-                // Vitals
                 bp: document.getElementById('v_bp').value, pulse: document.getElementById('v_pulse').value, o2: document.getElementById('v_o2').value,
                 weight: document.getElementById('v_weight').value, height: document.getElementById('v_height').value, bmi: document.getElementById('v_bmi').value,
-                // Labs
                 egfr: document.getElementById('l_egfr').value, creatinine: document.getElementById('l_cr').value, protein: document.getElementById('l_prot').value,
                 albumin: document.getElementById('l_alb').value, ast: document.getElementById('l_ast').value, alt: document.getElementById('l_alt').value, otherLabs: document.getElementById('l_other').value,
                 notes: document.getElementById('visitNotes').value,
@@ -534,32 +565,36 @@
                 fileData: fileData, fileName: fileName
             };
 
-            const res = await fetchAPI('addVisit', payload);
-            if(res.success) {
-                Swal.fire('Saved', 'บันทึกสำเร็จ', 'success');
-                closeVisitModal();
-                selectPatient(currentPatient);
-            } else { Swal.fire('Error', res.message, 'error'); }
+            try {
+                const res = await fetchAPI('addVisit', payload);
+                if(res.success) {
+                    Swal.fire('Saved', 'บันทึกสำเร็จ', 'success');
+                    closeVisitModal();
+                    selectPatient(currentPatient);
+                } else { Swal.fire('Error', res.message, 'error'); }
+            } catch(e) { Swal.fire('Error', e.message, 'error'); }
         }
 
         // --- OVERALL ---
         async function loadOverallData() {
             const tbody = document.getElementById('overallTableBody');
             tbody.innerHTML = '<tr><td colspan="6" class="text-center p-4">Loading...</td></tr>';
-            const res = await fetchAPI('getAllVisits');
-            tbody.innerHTML = '';
-            res.data.slice(0, 100).forEach(v => {
-                tbody.innerHTML += `
-                    <tr class="hover:bg-slate-50 border-b">
-                        <td class="p-3 whitespace-nowrap">${v.date}</td>
-                        <td class="p-3 text-slate-500">${v.hn}</td>
-                        <td class="p-3 font-medium text-blue-600 cursor-pointer" onclick="jumpToPatient('${v.hn}')">${v.patientName}</td>
-                        <td class="p-3 text-slate-600 truncate max-w-xs">${v.history}</td>
-                        <td class="p-3 text-center font-bold ${v.painScore>=7?'text-red-600':'text-slate-400'}">${v.painScore}</td>
-                        <td class="p-3 text-slate-400 text-xs">${v.recorder}</td>
-                    </tr>`;
-            });
-            window.allVisitsData = res.data;
+            try {
+                const res = await fetchAPI('getAllVisits');
+                tbody.innerHTML = '';
+                res.data.slice(0, 100).forEach(v => {
+                    tbody.innerHTML += `
+                        <tr class="hover:bg-slate-50 border-b">
+                            <td class="p-3 whitespace-nowrap">${v.date}</td>
+                            <td class="p-3 text-slate-500">${v.hn}</td>
+                            <td class="p-3 font-medium text-blue-600 cursor-pointer" onclick="jumpToPatient('${v.hn}')">${v.patientName}</td>
+                            <td class="p-3 text-slate-600 truncate max-w-xs">${v.history}</td>
+                            <td class="p-3 text-center font-bold ${v.painScore>=7?'text-red-600':'text-slate-400'}">${v.painScore}</td>
+                            <td class="p-3 text-slate-400 text-xs">${v.recorder}</td>
+                        </tr>`;
+                });
+                window.allVisitsData = res.data;
+            } catch(e) { tbody.innerHTML = '<tr><td colspan="6" class="text-center text-red-500">Failed to load</td></tr>'; }
         }
         function jumpToPatient(hn) { const p = allPatients.find(x => x.hn===hn); if(p) { switchTab('individual'); selectPatient(p); } }
 
@@ -583,9 +618,11 @@
             e.preventDefault();
             Swal.showLoading();
             const data = Object.fromEntries(new FormData(e.target));
-            const res = await fetchAPI('updatePatient', data);
-            if(res.success) { Swal.fire('สำเร็จ', 'แก้ไขข้อมูลเรียบร้อย', 'success'); loadAllPatients(); }
-            else Swal.fire('Error', res.message, 'error');
+            try {
+                const res = await fetchAPI('updatePatient', data);
+                if(res.success) { Swal.fire('สำเร็จ', 'แก้ไขข้อมูลเรียบร้อย', 'success'); loadAllPatients(); }
+                else Swal.fire('Error', res.message, 'error');
+            } catch(e) { Swal.fire('Error', e.message, 'error'); }
         });
 
         // --- DASHBOARD ---
@@ -612,36 +649,37 @@
             const end = document.getElementById('rptEnd').value;
             if(!start || !end) return Swal.fire('Warning', 'กรุณาระบุช่วงเวลา', 'warning');
             Swal.showLoading();
-            const res = await fetchAPI('getReportData', { startDate: start, endDate: end });
-            if(!res.success || res.data.length === 0) return Swal.fire('Info', 'ไม่พบข้อมูล', 'info');
+            try {
+                const res = await fetchAPI('getReportData', { startDate: start, endDate: end });
+                if(!res.success || res.data.length === 0) return Swal.fire('Info', 'ไม่พบข้อมูล', 'info');
 
-            if(type === 'excel') {
-                const ws = XLSX.utils.json_to_sheet(res.data);
-                const wb = XLSX.utils.book_new();
-                XLSX.utils.book_append_sheet(wb, ws, "FullReport");
-                XLSX.writeFile(wb, `Palliative_Full_Report_${start}_to_${end}.xlsx`);
-            } else if(type === 'word') {
-                let html = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'><head><meta charset='utf-8'><title>Report</title></head><body>`;
-                html += `<h1 style="text-align:center">Palliative Care Report (Full)</h1>`;
-                html += `<p>Date: ${start} - ${end}</p>`;
-                html += `<table border="1" style="border-collapse:collapse; width:100%"><thead><tr style="background:#ddd"><th>Date</th><th>HN</th><th>Name</th><th>Hx</th><th>Rx</th><th>DRP</th><th>Outcome</th><th>Score</th></tr></thead><tbody>`;
-                res.data.forEach(d => {
-                    html += `<tr>
-                        <td>${d.VisitDate}</td><td>${d.HN}</td><td>${d.PatientName}</td>
-                        <td>${d.History}</td><td>${d.Regimen}</td><td>${d.DRP_List}<br/>${d.DRP_Note}</td><td>${d.Outcome}</td>
-                        <td>Pain:${d.Pain_Score}, PPS:${d.PPS_Score}, ECOG:${d.ECOG}</td>
-                    </tr>`;
-                });
-                html += `</tbody></table></body></html>`;
-                const blob = new Blob(['\ufeff', html], { type: 'application/msword' });
-                const a = document.createElement('a');
-                a.href = URL.createObjectURL(blob);
-                a.download = `Palliative_Report_${start}_to_${end}.doc`;
-                a.click();
-            }
-            Swal.close();
+                if(type === 'excel') {
+                    const ws = XLSX.utils.json_to_sheet(res.data);
+                    const wb = XLSX.utils.book_new();
+                    XLSX.utils.book_append_sheet(wb, ws, "FullReport");
+                    XLSX.writeFile(wb, `Palliative_Full_Report_${start}_to_${end}.xlsx`);
+                } else if(type === 'word') {
+                    let html = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'><head><meta charset='utf-8'><title>Report</title></head><body>`;
+                    html += `<h1 style="text-align:center">Palliative Care Report (Full)</h1>`;
+                    html += `<p>Date: ${start} - ${end}</p>`;
+                    html += `<table border="1" style="border-collapse:collapse; width:100%"><thead><tr style="background:#ddd"><th>Date</th><th>HN</th><th>Name</th><th>Hx</th><th>Rx</th><th>DRP</th><th>Outcome</th><th>Score</th></tr></thead><tbody>`;
+                    res.data.forEach(d => {
+                        html += `<tr>
+                            <td>${d.VisitDate}</td><td>${d.HN}</td><td>${d.PatientName}</td>
+                            <td>${d.History}</td><td>${d.Regimen}</td><td>${d.DRP_List}<br/>${d.DRP_Note}</td><td>${d.Outcome}</td>
+                            <td>Pain:${d.Pain_Score}, PPS:${d.PPS_Score}, ECOG:${d.ECOG}</td>
+                        </tr>`;
+                    });
+                    html += `</tbody></table></body></html>`;
+                    const blob = new Blob(['\ufeff', html], { type: 'application/msword' });
+                    const a = document.createElement('a');
+                    a.href = URL.createObjectURL(blob);
+                    a.download = `Palliative_Report_${start}_to_${end}.doc`;
+                    a.click();
+                }
+                Swal.close();
+            } catch(e) { Swal.fire('Error', e.message, 'error'); }
         }
     </script>
 </body>
 </html>
-
