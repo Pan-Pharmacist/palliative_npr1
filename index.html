@@ -501,15 +501,15 @@
                     <div><p class="text-xs text-slate-400">Pain Score</p><p class="font-bold text-red-600 text-xl">${v.painScore}</p></div>
                     <div><p class="text-xs text-slate-400">Status</p><p>PPS: ${v.pps}% / ECOG: ${v.ecog}</p></div>
                 </div>
-                <div><p class="font-bold mb-1">อาการสำคัญ / ประวัติ</p><div class="bg-slate-50 p-3 rounded border">${v.history || '-'}</div></div>
-                <div><p class="font-bold mb-1">การรักษา / ยา</p><div class="bg-slate-50 p-3 rounded border">${v.regimen || '-'}</div></div>
-                <div><p class="font-bold mb-1 text-orange-600">DRPs</p><div class="bg-orange-50 p-3 rounded border border-orange-100 text-orange-800">${v.drpList || '-'} <br><span class="text-xs text-slate-500">Note: ${v.drpNote || '-'}</span></div></div>
+                <div><p class="font-bold mb-1">อาการสำคัญ (PC symptom)</p><div class="bg-slate-50 p-3 rounded border">${v.history || '-'}</div></div>
+                <div><p class="font-bold mb-1">ประวัติยาล่าสุด (Medicine)</p><div class="bg-slate-50 p-3 rounded border">${v.regimen || '-'}</div></div>
+                <div><p class="font-bold mb-1 text-orange-600">ปัญหาจากการใช้ยา (DRPs)</p><div class="bg-orange-50 p-3 rounded border border-orange-100 text-orange-800">${v.drpList || '-'} <br><span class="text-xs text-slate-500">Note: ${v.drpNote || '-'}</span></div></div>
                 <div class="grid grid-cols-2 gap-4">
-                    <div><p class="font-bold mb-1">Intervention</p><div class="bg-green-50 p-3 rounded border border-green-100">${v.intervention || '-'}</div></div>
-                    <div><p class="font-bold mb-1">Outcome</p><div class="bg-slate-50 p-3 rounded border">${v.outcome || '-'}</div></div>
+                    <div><p class="font-bold mb-1">การแก้ไขและป้องกันการเกิดปัญหา/การให้คำแนะนำ</p><div class="bg-green-50 p-3 rounded border border-green-100">${v.intervention || '-'}</div></div>
+                    <div><p class="font-bold mb-1">แผนการรักษา</p><div class="bg-slate-50 p-3 rounded border">${v.outcome || '-'}</div></div>
                 </div>
                 <div class="bg-blue-50 p-3 rounded border border-blue-100">
-                    <p class="font-bold text-blue-800 text-xs mb-2">Vitals & Labs</p>
+                    <p class="font-bold text-blue-800 text-xs mb-2">สัญญาณชีพ/ผลแลปทางห้องปฏิบัติการ</p>
                     <div class="grid grid-cols-4 gap-2 text-xs">
                         <p>BP: <b>${v.bp||'-'}</b></p><p>P: <b>${v.pulse||'-'}</b></p><p>O2: <b>${v.o2||'-'}</b></p><p>Wt: <b>${v.weight||'-'}</b></p>
                         <p>eGFR: <b>${v.egfr||'-'}</b></p><p>Cr: <b>${v.creatinine||'-'}</b></p><p>Alb: <b>${v.albumin||'-'}</b></p><p>Other: <b>${v.otherLabs||'-'}</b></p>
@@ -664,6 +664,7 @@
     </script>
 </body>
 </html>
+
 
 
 
